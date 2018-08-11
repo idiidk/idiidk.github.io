@@ -1,0 +1,61 @@
+body, html {
+    padding: 0;
+    margin: 0;
+    background-color: #000;
+    overflow: hidden;
+}
+
+.centered {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2;
+}
+
+.background-video {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: calc((100vw*9) /16);
+    z-index: 0;
+}
+
+.background-video-wrapper {
+    height: 100vh;
+    overflow: hidden;
+}
+
+@media (max-aspect-ratio: 16 / 9) {
+    .background-video-wrapper {
+        width: 100%;
+        overflow: hidden;
+    }
+
+    .background-video {
+        width: calc((100vh*16)/9);
+        height: 100vh;
+    }
+}
+
+@media only screen and (max-width: 1280px) {
+  .background-video-overlay {
+    display: none;
+  }
+}
+
+.background-video-overlay {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    min-width: 100%;
+    min-height: 100%;
+    z-index: 1;
+}
+
+.logo {
+    color: white;
+    z-index: 3;
+}
