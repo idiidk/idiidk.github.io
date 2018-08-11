@@ -15,7 +15,7 @@ body, html {
 
 .background-image {
     height: 100vh;
-    background-image: url("https://source.unsplash.com/random/1920x1080?night");
+    background-image: url("https://source.unsplash.com/random/1920x1080?night,city");
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -28,5 +28,6 @@ body, html {
 }
 
 .logo {
+    text-align: center;
     color: white;
 }
