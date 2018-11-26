@@ -1,0 +1,52 @@
+* {
+  font-family: "Source Code Pro", monospace;
+  font-size: calc(12px + 1vw);
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+.output-wrapper {
+  width: 100vw;
+}
+
+.math-output {
+  width: calc(100vw - 4vw);
+  height: calc(50vh - 4vw);
+  margin: 0;
+  padding: 2vw;
+
+  resize: none;
+  vertical-align: top;
+
+  color: white;
+  border: none;
+  outline: none;
+  cursor: default;
+  background-color: black;
+  overflow-y: scroll;
+}
+
+.input-wrapper {
+  width: 100vw;
+}
+
+.math-input {
+  width: calc(100vw - 4vw);
+  height: calc(50vh - 4vw);
+  margin: 0;
+  padding: 2vw;
+
+  resize: none;
+  vertical-align: top;
+
+  color: white;
+  border: none;
+  outline: none;
+  background-color: #0F0F0F;
+  border-radius: 0;
+}
