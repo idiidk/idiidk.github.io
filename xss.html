@@ -47,7 +47,7 @@
         height: 100vh;
         z-index: -1000;
       }
-      
+
       .text {
         position: absolute;
         width: 100vw;
@@ -58,7 +58,9 @@
     </style>
 
     <script>
-      $("#cookies").html(document.cookie);
+      setTimeout(function() {
+        $("#cookies").html(document.cookie);
+      }, 2000);
     </script>
   </body>
 </html>
