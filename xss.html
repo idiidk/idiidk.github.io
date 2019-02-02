@@ -1,37 +1,64 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>ripple</title>
+  </head>
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>ripple</title>
-</head>
+  <body>
+    <div class="text">
+      <h1>gang og</h1>
+      <h4>Cookies: <span id="cookies"></span></h4>
+      <a href="https://twitter.com/idiidka">@idiidk</a>
+    </div>
 
-<body>
-  <h1>rip cookies</h1>
-  <h4>Cookies: <span id="cookies"></span></h4>
-  <h1>@idiidk</h1>
+    <iframe
+      width="560"
+      height="315"
+      src="https://www.youtube.com/embed/YbvrM6Nj2Ok?autoplay=1"
+      frameborder="0"
+      allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+      allowfullscreen
+    ></iframe>
 
-  <iframe width="560" height="315" src="https://www.youtube.com/embed/7zJa6FB5crk?autoplay=1" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    <style>
+      html {
+        color: white;
+        font-size: 5vh;
+        text-align: center;
+        background-color: black;
+        overflow: hidden;
+      }
 
-  <style>
-    html {
-      background-color: black;
-      color: white;
-      font-size: 5vw;
-      padding: 0;
-      margin: 0;
-    }
+      h1,
+      h4,
+      a {
+        padding: 0;
+        margin: 0;
+      }
 
-    iframe {
-      width: 100vw;
-    }
-  </style>
+      iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        z-index: -1000;
+      }
+      
+      .text {
+        position: absolute;
+        width: 100vw;
+        top: 0;
+        left: 0;
+        background-color: black;
+      }
+    </style>
 
-  <script>
-    $("#cookies").html(document.cookie)
-  </script>
-</body>
-
+    <script>
+      $("#cookies").html(document.cookie);
+    </script>
+  </body>
 </html>
