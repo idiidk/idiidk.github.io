@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- Y0 gang -->
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>2019</title>
+</head>
+
+<body>
+  <h1>c1: Skere Login (charcode hel)</h1>
+  <h4>De meest veilige login ooit gemaakt natuurlijk. 100% niet te kraken</h4>
+
+  <input id="password-box" placeholder="Wachtwoord">
+  <button onclick="checkPass()" id="login-btn">Login</button>
+
+  <br>
+  <br>
+  <h3>Broncode:</h3>
+  <textarea rows="5" id="sourcecode"></textarea>
+
+  <style>
+    html {
+      background: black;
+      color: white;
+    }
+
+    #sourcecode {
+      width: 80vw;
+      height: 50vh;
+    }
+  </style>
+
+  <script>
+    var sourcecode = document.getElementById("sourcecode")
+
+    function checkPass() {
+      var done = false
+      var password = document.getElementById("password-box").value
+
+      if (password[1] === String.fromCharCode(72) && password[0] === String.fromCharCode(Math.sqrt(Math.pow(97, 2)))) {
+        if (password[2] === String.fromCharCode(")".charCodeAt(0) * 2)) {
+          if (password[3] === document.documentElement.innerHTML[6]) {
+            if (password[4] === -1 ? "c" : "d") {
+              if (password.endsWith("HM6Ly9wYXN0ZWJpbi5jb20vdlZ3c1BBeUY=")) {
+                if (password.length === 40) {
+                  done = !done
+                  document.location.href = atob(password)
+                }
+              }
+            }
+          }
+        }
+      }
+
+      if (!done) {
+        alert("Wachtwoord incorrect!")
+      }
+    }
+
+    sourcecode.value = document.documentElement.innerHTML
+  </script>
+</body>
+
+</html>
