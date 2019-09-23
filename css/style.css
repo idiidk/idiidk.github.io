@@ -31,3 +31,11 @@ body, html {
     text-align: center;
     color: white;
 }
+
+.xd {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
