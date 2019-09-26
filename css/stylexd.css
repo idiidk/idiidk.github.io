@@ -27,12 +27,8 @@ body, html {
     background-color: rgba(0, 0, 0, 0.1);
 }
 
-.logo {
-    text-align: center;
-    color: white;
-}
-
 a {
+    font-size: 5px;
     color: white;
     text-decoration: none;
 }
