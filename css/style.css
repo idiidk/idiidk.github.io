@@ -15,7 +15,7 @@ body, html {
 
 .background-image {
     height: 100vh;
-    background-image: url("https://cdn.discordapp.com/attachments/504412281153519639/630741874512101387/image0.gif");
+    background-image: url("https://source.unsplash.com/random/1920x1080?night,city");
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
