@@ -35,8 +35,7 @@ export default {
     const app = new PIXI.Application({ resizeTo: window })
     this.$refs.pixiWrapper.appendChild(app.view)
 
-    const container = new PIXI.Container()
-    container.filters = [new KawaseBlurFilter(30, 10, true)]
+    app.stage.filters = [new KawaseBlurFilter(30, 10, true)]
 
     const blobs = []
     for (let i = 0; i < 50; i++) {
@@ -53,7 +52,7 @@ export default {
       graphics.endFill()
 
       blobs.push(new Blob(graphics))
-      container.addChild(graphics)
+      app.stage.addChild(graphics)
     }
 
     app.ticker.add(() => {
@@ -68,8 +67,6 @@ export default {
         if (centerY > app.view.height || centerY < 0) blob.vy *= -1
       }
     })
-
-    app.stage.addChild(container)
   },
 }
 </script>
