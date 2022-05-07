@@ -26,7 +26,7 @@ export default {
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
     {
-      src: '~/plugins/pixi',
+      src: '~/plugins/pixi.client',
       mode: 'client',
       ssr: false,
     },

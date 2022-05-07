@@ -3,8 +3,6 @@
 </template>
 
 <script>
-import { KawaseBlurFilter } from '@pixi/filter-kawase-blur'
-
 function randomBetweenFloat(min, max) {
   return Math.random() * (max - min + 1) + min
 }
@@ -19,7 +17,7 @@ class Blob {
     this.vx = randomBetweenFloat(0.5, 1) * randomBetweenInt(-1, 1) || 1
     this.vy = randomBetweenFloat(0.5, 1) * randomBetweenInt(-1, 1) || -1
 
-    // pixi graphics element
+    // pixi graphics elementy
     this.gr = graphics
   }
 }
@@ -40,20 +38,21 @@ export default {
         '4895ef',
         '4cc9f0',
       ].map((e) => `0x${e}`),
-      filters: [
-        new KawaseBlurFilter(30, 10, true),
-        new PIXI.filters.NoiseFilter(0.03, 0.2),
-      ],
     }
   },
   mounted() {
+    const PIXI = this.$PIXI
+
     const app = new PIXI.Application({
       resizeTo: window,
       backgroundColor: this.colors[0],
     })
     this.$refs.pixiWrapper.appendChild(app.view)
 
-    app.stage.filters = this.filters
+    app.stage.filters = [
+      new PIXI.filters.KawaseBlurFilter(30, 10, true),
+      new PIXI.filters.NoiseFilter(0.03, 0.2),
+    ]
 
     const blobs = []
     for (let i = 0; i < 15; i++) {
