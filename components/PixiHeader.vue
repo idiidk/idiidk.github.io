@@ -16,8 +16,8 @@ function randomBetweenInt(min, max) {
 class Blob {
   constructor(graphics) {
     // velocity
-    this.vx = randomBetweenFloat(1, 2) * randomBetweenInt(-1, 1) || 1
-    this.vy = randomBetweenFloat(1, 2) * randomBetweenInt(-1, 1) || -1
+    this.vx = randomBetweenFloat(0.5, 1) * randomBetweenInt(-1, 1) || 1
+    this.vy = randomBetweenFloat(0.5, 1) * randomBetweenInt(-1, 1) || -1
 
     // pixi graphics element
     this.gr = graphics
@@ -28,17 +28,35 @@ export default {
   name: 'PixiHeader',
   data() {
     return {
-      colors: ['0x22577a', '0x38a3a5', '0x57cc99', '0x80ed99', '0xc7f9cc'],
+      colors: [
+        'f72585',
+        'b5179e',
+        '7209b7',
+        '560bad',
+        '480ca8',
+        '3a0ca3',
+        '3f37c9',
+        '4361ee',
+        '4895ef',
+        '4cc9f0',
+      ].map((e) => `0x${e}`),
+      filters: [
+        new KawaseBlurFilter(30, 10, true),
+        new PIXI.filters.NoiseFilter(0.03, 0.2),
+      ],
     }
   },
   mounted() {
-    const app = new PIXI.Application({ resizeTo: window })
+    const app = new PIXI.Application({
+      resizeTo: window,
+      backgroundColor: this.colors[0],
+    })
     this.$refs.pixiWrapper.appendChild(app.view)
 
-    app.stage.filters = [new KawaseBlurFilter(30, 10, true)]
+    app.stage.filters = this.filters
 
     const blobs = []
-    for (let i = 0; i < 50; i++) {
+    for (let i = 0; i < 15; i++) {
       const graphics = new PIXI.Graphics()
 
       const randomColor =
@@ -47,7 +65,7 @@ export default {
       graphics.drawCircle(
         randomBetweenFloat(0, app.view.width),
         randomBetweenFloat(0, app.view.height),
-        randomBetweenFloat(30, 150)
+        randomBetweenFloat(200, 350)
       )
       graphics.endFill()
 
