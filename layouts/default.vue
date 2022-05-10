@@ -1,6 +1,6 @@
 <template>
   <v-app>
-    <AppBar transparent dark />
+    <AppBar />
 
     <v-main class="main">
       <Nuxt />
@@ -21,7 +21,6 @@ export default {
 
 <style scoped>
 .main {
-  padding-top: 0 !important;
   height: 100vh !important;
 }
 </style>

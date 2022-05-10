@@ -1,5 +1,5 @@
 <template>
-  <v-row no-gutters>
+  <v-row dense>
     <v-col
       v-for="(project, index) of work"
       :key="project.slug"
@@ -7,19 +7,7 @@
       md="6"
     >
       <div ref="projectWrappers" class="project-image-wrapper">
-        <v-img class="image" :src="project.img"></v-img>
-
-        <div class="overlay">
-          <v-row>
-            <h1 class="white--text">{{ project.title }}</h1>
-          </v-row>
-          <v-row>
-            <span class="white--text">{{ project.description }}</span>
-          </v-row>
-          <v-row>
-            <v-btn class="read-more" dark outlined>read more</v-btn>
-          </v-row>
-        </div>
+        <v-img aspect-ratio="1" class="image" :src="project.img"></v-img>
       </div>
     </v-col>
   </v-row>
@@ -47,36 +35,21 @@ export default {
         // apply a small delay to the second image for a nice effect
         if (this.breakpoint >= 2) {
           delay = i % 2 === 0 ? 0 : 0.3 * i
+        } else if(this.breakpoint === 0) {
+          delay = i * 0.3;
         }
 
-        const element = this.$refs.projectWrappers[i]
-        const timeline = gsap.timeline({
-          scrollTrigger: {
-            trigger: element,
-          },
-        })
+        const element  = this.$refs.projectWrappers[i]
 
-        timeline.to(
+        gsap.to(
           element.getElementsByClassName('image')[0],
           {
+            scrollTrigger: {
+              trigger: element,
+            },
             autoAlpha: 1,
             scale: 1,
             delay: delay,
-            duration: 1,
-            ease: Power3.easeOut,
-          },
-          'start'
-        )
-
-        timeline.fromTo(
-          element.getElementsByClassName('overlay')[0],
-          {
-            x: -20,
-          },
-          {
-            autoAlpha: 1,
-            x: 0,
-            delay: delay + 0.1,
             duration: 1,
             ease: Power3.easeOut,
           },
@@ -109,8 +82,6 @@ export default {
   position: relative;
 
   .image {
-    height: 100vh;
-
     opacity: 0;
     transform: scale(0.95);
 

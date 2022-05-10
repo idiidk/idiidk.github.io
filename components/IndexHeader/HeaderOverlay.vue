@@ -84,7 +84,7 @@ export default {
 
   margin: 0 15vw;
 
-  font-size: clamp(1rem, 2.5vw, 1.5rem);
+  font-size: clamp(1rem, 3vw, 2rem);
 
   .header-title {
     line-height: 1;
