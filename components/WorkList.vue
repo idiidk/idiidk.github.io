@@ -10,8 +10,15 @@
         <v-img class="image" :src="project.img"></v-img>
 
         <div class="overlay">
-          <h1 class="white--text">{{ project.title }}</h1>
-          <span class="white--text">{{ project.description }}</span>
+          <v-row>
+            <h1 class="white--text">{{ project.title }}</h1>
+          </v-row>
+          <v-row>
+            <span class="white--text">{{ project.description }}</span>
+          </v-row>
+          <v-row>
+            <v-btn class="read-more" dark outlined>read more</v-btn>
+          </v-row>
         </div>
       </div>
     </v-col>
@@ -64,7 +71,7 @@ export default {
         timeline.fromTo(
           element.getElementsByClassName('overlay')[0],
           {
-            x: -10,
+            x: -20,
           },
           {
             autoAlpha: 1,
@@ -118,6 +125,10 @@ export default {
     opacity: 0;
 
     padding: clamp(1rem, 5vw, 4rem);
+  }
+
+  .read-more {
+    margin-top: 2rem;
   }
 }
 </style>
