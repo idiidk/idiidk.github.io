@@ -15,5 +15,8 @@ import AppBar from '@/components/AppBar.vue'
 
 export default {
   name: 'DefaultLayout',
+  components: {
+    AppBar,
+  },
 }
 </script>

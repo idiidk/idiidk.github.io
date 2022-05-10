@@ -1,6 +1,6 @@
 <template>
   <v-app>
-    <AppBar ref="appBar" />
+    <AppBar transparent dark />
 
     <v-main class="main">
       <Nuxt />

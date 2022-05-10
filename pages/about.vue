@@ -1,13 +1,10 @@
 <template>
-  <div>
-    <IndexHeader />
-  </div>
+  <div></div>
 </template>
 
 <script>
 export default {
-  name: 'IndexPage',
-  layout: 'index',
+  name: 'AboutPage',
 }
 </script>
 

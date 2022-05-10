@@ -60,9 +60,6 @@ import ContactForm from '@/components/ContactForm.vue'
 
 export default {
   name: 'AppBarContactModal',
-  mounted() {
-    console.log(this.$refs.contactForm)
-  },
   data() {
     return {
       dialog: false,
@@ -88,6 +85,9 @@ export default {
     onError(error) {
       this.error = error
     },
+  },
+  components: {
+    ContactForm,
   },
 }
 </script>

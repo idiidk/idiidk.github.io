@@ -1,6 +1,13 @@
 <template>
-  <v-app-bar dark color="rgba(255,255,255,0)" elevate-on-scroll app>
-    <v-toolbar-title>Vincent Brouwer</v-toolbar-title>
+  <v-app-bar
+    :dark="dark"
+    :color="transparent ? 'rgba(255,255,255,0)' : 'white'"
+    elevate-on-scroll
+    app
+  >
+    <v-toolbar-title class="app-bar-title" @click="$router.push('/')">
+      Vincent Brouwer
+    </v-toolbar-title>
 
     <v-spacer></v-spacer>
 
@@ -21,7 +28,16 @@ import AppBarContactModal from '@/components/AppBarContactModal.vue'
 
 export default {
   name: 'AppBar',
+  props: {
+    dark: Boolean,
+    transparent: Boolean,
+  },
+  components: { AppBarContactModal },
 }
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.app-bar-title {
+  cursor: pointer;
+}
+</style>

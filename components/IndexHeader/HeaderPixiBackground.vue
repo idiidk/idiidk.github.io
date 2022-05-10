@@ -23,7 +23,7 @@ class Blob {
 }
 
 export default {
-  name: 'PixiHeader',
+  name: 'HeaderPixiBackground',
   data() {
     return {
       colors: [
