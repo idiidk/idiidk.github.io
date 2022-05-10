@@ -41,6 +41,8 @@ export default {
 
   // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
   buildModules: [
+    '@nuxtjs/google-fonts',
+
     // https://go.nuxtjs.dev/typescript
     '@nuxt/typescript-build',
     // https://go.nuxtjs.dev/vuetify
@@ -73,6 +75,12 @@ export default {
           success: colors.green.accent3,
         },
       },
+    },
+  },
+
+  googleFonts: {
+    families: {
+      Inter: [400, 600],
     },
   },
 
