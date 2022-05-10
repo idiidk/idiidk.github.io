@@ -7,7 +7,7 @@
 <script>
 export default {
   name: 'IndexPage',
-  layout: 'no-overflow'
+  layout: 'no-overflow',
 }
 </script>
 
