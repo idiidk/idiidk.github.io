@@ -1,7 +1,7 @@
 ---
 title: Formdesk
 description: A platform that allows students to view reviews of studies abroad
-img: formdesk.jpeg
+img: formdesk2.jpeg
 ---
 
 # Formdesk

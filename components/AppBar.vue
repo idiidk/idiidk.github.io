@@ -2,7 +2,7 @@
   <v-app-bar
     :dark="dark"
     :color="transparent ? 'rgba(255,255,255,0)' : 'white'"
-    elevate-on-scroll
+    elevation="0"
     app
   >
     <v-toolbar-title class="app-bar-title" @click="$router.push('/')">

@@ -1,11 +1,9 @@
 <template>
   <v-app>
-    <AppBar />
+    <AppBar transparent dark />
 
-    <v-main>
-      <v-container>
-        <Nuxt />
-      </v-container>
+    <v-main class="main">
+      <Nuxt />
     </v-main>
   </v-app>
 </template>
@@ -14,9 +12,16 @@
 import AppBar from '@/components/AppBar.vue'
 
 export default {
-  name: 'DefaultLayout',
+  name: 'IndexLayout',
   components: {
     AppBar,
   },
 }
 </script>
+
+<style scoped>
+.main {
+  padding-top: 0 !important;
+  height: 100vh !important;
+}
+</style>

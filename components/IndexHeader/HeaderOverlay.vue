@@ -27,15 +27,11 @@ export default {
 
       for (let i = 0; i < reverseAnimate.length; i++) {
         promises.push(
-          gsap.to(
-            reverseAnimate[i],
-
-            {
-              autoAlpha: 0,
-              delay: 0.1 * i,
-              ease: Power3.easeOut,
-            }
-          )
+          gsap.to(reverseAnimate[i], {
+            autoAlpha: 0,
+            delay: 0.1 * i,
+            ease: Power3.easeOut,
+          })
         )
       }
 

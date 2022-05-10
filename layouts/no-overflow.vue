@@ -9,9 +9,14 @@
 </template>
 
 <script>
+import AppBar from '@/components/AppBar.vue'
+
 export default {
   name: 'IndexLayout',
-  layout: 'index',
+  layout: 'no-overflow',
+  components: {
+    AppBar,
+  },
 }
 </script>
 

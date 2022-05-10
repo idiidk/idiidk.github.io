@@ -27,10 +27,14 @@ export default {
   plugins: [
     {
       src: '~/plugins/pixi.client',
-      mode: 'client',
       ssr: false,
     },
+    {
+      src: '~/plugins/gsap.client',
+    },
   ],
+
+  transpile: ['gsap'],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
   components: true,
