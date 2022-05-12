@@ -7,7 +7,7 @@
       md="6"
     >
       <div ref="projectWrappers" class="project-image-wrapper">
-        <v-img aspect-ratio="1" class="image" :src="project.img"></v-img>
+        <v-img aspect-ratio="1" class="image" :src="'/' + project.img"></v-img>
       </div>
     </v-col>
   </v-row>
