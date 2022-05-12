@@ -128,8 +128,13 @@ export default {
   width: 100%;
   height: 100%;
 
-  background-size: 16px;
-  background-size: 16px;
+  background-size: 24px;
+  background-size: 24px;
+
+  @media only screen and (max-width: 1200px) {
+    background-size: 16px;
+    background-size: 16px;
+  }
 
   @media only screen and (max-width: 700px) {
     background-size: 8px;
