@@ -1,6 +1,6 @@
 <template>
   <div class="header">
-    <HeaderPixiBackground />
+    <HeaderPixiBackground ref="headerPixiBackground" />
     <HeaderOverlay />
   </div>
 </template>
@@ -14,6 +14,11 @@ export default {
   components: {
     HeaderOverlay,
     HeaderPixiBackground,
+  },
+  methods: {
+    destroyPixi() {
+      this.$refs.headerPixiBackground.destroy()
+    },
   },
 }
 </script>

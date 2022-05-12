@@ -26,6 +26,7 @@ export default {
   name: 'HeaderPixiBackground',
   data() {
     return {
+      app: null,
       colors: [
         'f72585',
         'b5179e',
@@ -48,7 +49,7 @@ export default {
       backgroundColor: this.colors[0],
     })
     this.$refs.pixiWrapper.appendChild(app.view)
-
+    app: null
     app.stage.filters = [
       new PIXI.filters.KawaseBlurFilter(30, 10, true),
       new PIXI.filters.NoiseFilter(0.03, 0.2),
@@ -84,6 +85,13 @@ export default {
         if (centerY > app.view.height || centerY < 0) blob.vy *= -1
       }
     })
+
+    this.app = app
+  },
+  methods: {
+    destroy() {
+      this.app.destroy()
+    },
   },
 }
 </script>

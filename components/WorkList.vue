@@ -41,20 +41,16 @@ export default {
 
         const element = this.$refs.projectWrappers[i]
 
-        gsap.to(
-          element.getElementsByClassName('image')[0],
-          {
-            scrollTrigger: {
-              trigger: element,
-            },
-            autoAlpha: 1,
-            scale: 1,
-            delay: delay,
-            duration: 1,
-            ease: Power3.easeOut,
+        gsap.to(element.getElementsByClassName('image')[0], {
+          scrollTrigger: {
+            trigger: element,
           },
-          'start'
-        )
+          autoAlpha: 1,
+          scale: 1,
+          delay: delay,
+          duration: 1,
+          ease: Power3.easeOut,
+        })
       }
     }, 100)
   },
