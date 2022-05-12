@@ -131,6 +131,11 @@ export default {
   background-size: 16px;
   background-size: 16px;
 
+  @media only screen and (max-width: 700px) {
+    background-size: 8px;
+    background-size: 8px;
+  }
+
   background-image: url('/noise.png');
   background-repeat: repeat;
 
