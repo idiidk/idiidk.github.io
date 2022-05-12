@@ -29,9 +29,9 @@ export default {
         // If the layout consists of two images next to each other,
         // apply a small delay to the second image for a nice effect
         if (this.breakpoint >= 2) {
-          delay = i % 2 === 0 ? 0 : 0.3 * i
-        } else if (this.breakpoint === 0) {
-          delay = i * 0.3
+          delay = i % 2 === 0 ? 0 : 0.3
+        } else if (this.breakpoint <= 1) {
+          delay = 0.2
         }
 
         const element = this.$refs.projectWrappers[i]
