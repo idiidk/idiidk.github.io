@@ -8,11 +8,6 @@
 export default {
   name: 'IndexPage',
   layout: 'no-overflow',
-  beforeRouteLeave(_, __, next) {
-    console.log('we leavin')
-    this.$refs.indexHeader.destroyPixi()
-    next()
-  },
 }
 </script>
 

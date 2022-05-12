@@ -1,26 +1,28 @@
 <template>
   <div class="header">
-    <HeaderPixiBackground ref="headerPixiBackground" />
+    <HeaderBackground class="background" />
     <HeaderOverlay />
   </div>
 </template>
 
 <script>
 import HeaderOverlay from './HeaderOverlay.vue'
-import HeaderPixiBackground from './HeaderPixiBackground.vue'
+import HeaderBackground from './HeaderBackground.vue'
 
 export default {
   name: 'Header',
   components: {
     HeaderOverlay,
-    HeaderPixiBackground,
-  },
-  methods: {
-    destroyPixi() {
-      this.$refs.headerPixiBackground.destroy()
-    },
+    HeaderBackground,
   },
 }
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.header {
+  .background {
+    width: 100%;
+    height: 100vh;
+  }
+}
+</style>

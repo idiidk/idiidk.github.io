@@ -21,11 +21,6 @@ export default {
   props: {
     work: Array,
   },
-  watch: {
-    work(work) {
-      console.log(work)
-    },
-  },
   mounted() {
     setTimeout(() => {
       for (let i = 0; i < this.$refs.projectWrappers.length; i++) {
