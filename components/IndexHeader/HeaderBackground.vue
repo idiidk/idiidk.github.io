@@ -57,6 +57,14 @@ class Blob {
 
 export default {
   name: 'HeaderPixiBackground',
+  data() {
+    return {
+      rendering: true,
+    }
+  },
+  beforeUnmount() {
+    console.log(1234)
+  },
   mounted() {
     const canvas = this.$refs.backgroundCanvas
     const ctx = canvas.getContext('2d')
@@ -107,10 +115,17 @@ export default {
         blob.render()
       }
 
-      requestAnimationFrame(render)
+      if (this.rendering) {
+        requestAnimationFrame(render)
+      }
     }
 
     requestAnimationFrame(render)
+  },
+  methods: {
+    stopRenderer() {
+      this.rendering = false
+    },
   },
 }
 </script>

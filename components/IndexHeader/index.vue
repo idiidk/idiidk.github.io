@@ -1,6 +1,6 @@
 <template>
   <div class="header">
-    <HeaderBackground class="background" />
+    <HeaderBackground ref="background" class="background" />
     <HeaderOverlay />
   </div>
 </template>
@@ -14,6 +14,11 @@ export default {
   components: {
     HeaderOverlay,
     HeaderBackground,
+  },
+  methods: {
+    stopRenderer() {
+      this.$refs.background.stopRenderer()
+    },
   },
 }
 </script>
