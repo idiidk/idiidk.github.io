@@ -1,13 +1,14 @@
 <template>
   <v-row dense>
-    <v-col
-      v-for="(project, index) of work"
-      :key="project.slug"
-      cols="12"
-      md="6"
-    >
+    <v-col v-for="project of work" :key="project.slug" cols="12" md="6">
       <div ref="projectWrappers" class="project-image-wrapper">
         <v-img aspect-ratio="1" class="image" :src="'/' + project.img"></v-img>
+        <div
+          @click="$router.push(`/work/${project.slug}`)"
+          class="overlay d-flex align-center justify-center"
+        >
+          <h1 class="white--text">{{ project.title }}</h1>
+        </div>
       </div>
     </v-col>
   </v-row>
@@ -36,7 +37,7 @@ export default {
 
         const element = this.$refs.projectWrappers[i]
 
-        gsap.to(element.getElementsByClassName('image')[0], {
+        gsap.to(element, {
           scrollTrigger: {
             trigger: element,
           },
@@ -71,22 +72,32 @@ export default {
 <style lang="scss" scoped>
 .project-image-wrapper {
   position: relative;
+  opacity: 0;
+  transform: scale(0.95);
 
   .image {
-    opacity: 0;
-    transform: scale(0.95);
-
     padding: 2rem;
   }
 
   .overlay {
     position: absolute;
-    bottom: 0;
+    top: 0;
     left: 0;
 
-    opacity: 0;
+    width: 100%;
+    height: 100%;
 
+    opacity: 0;
+    transition: opacity 0.2s;
+
+    background: rgba(0, 0, 0, 0.4);
     padding: clamp(1rem, 5vw, 4rem);
+
+    &:hover {
+      opacity: 1;
+    }
+
+    cursor: pointer;
   }
 
   .read-more {

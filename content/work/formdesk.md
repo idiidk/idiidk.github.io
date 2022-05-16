@@ -4,8 +4,6 @@ description: A platform that allows students to view reviews of studies abroad
 img: formdesk.jpeg
 ---
 
-# Formdesk
-
 Formdesk is a project I worked on while working at [B302, A creative media mob](https://b302.nl). It is a site where students of the HAN University of Applied Sciences can view different metrics of studys abroad to decide if it's right for them. The description that's on the site itself is as follows:
 
 Thinking about studying abroad? Good choice, spending time abroad not only fulfils academic goals, but also lets you experience a new culture, language and environment. Jumping into a new experience can be difficult and overwhelming, but lucky for you, we are here to help!
