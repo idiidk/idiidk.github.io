@@ -2,7 +2,7 @@
   <v-container class="container">
     <div class="title-wrapper">
       <PageTitle :title="work.title" :subtitle="work.description" />
-      <v-btn @click="$router.go(-1)" outlined>back</v-btn>
+      <v-btn @click="$router.go(-1)" outlined class="back-button">back</v-btn>
     </div>
 
     <v-row>
@@ -44,6 +44,16 @@ export default {
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
+
+    @media only screen and (max-width: 1200px) {
+      flex-direction: column;
+      align-items: flex-start;
+
+      .back-button {
+        margin-top: -3rem;
+        margin-bottom: 4rem;
+      }
+    }
   }
 }
 </style>
