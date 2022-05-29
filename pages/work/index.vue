@@ -17,7 +17,7 @@ export default {
   name: 'WorkPage',
   components: { WorkList },
   async asyncData({ $content }) {
-    const work = await $content('work').fetch()
+    const work = await $content('work').sortBy('updatedAt').fetch()
 
     return { work }
   },

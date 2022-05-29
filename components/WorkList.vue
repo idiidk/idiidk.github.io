@@ -2,7 +2,7 @@
   <v-row dense>
     <v-col v-for="project of work" :key="project.slug" cols="12" md="6">
       <div ref="projectWrappers" class="project-image-wrapper">
-        <v-img aspect-ratio="1" class="image" :src="'/' + project.img"></v-img>
+        <v-img aspect-ratio="1" class="image" :src="'/work/' + project.img"></v-img>
         <div
           @click="$router.push(`/work/${project.slug}`)"
           class="overlay d-flex align-center justify-center"

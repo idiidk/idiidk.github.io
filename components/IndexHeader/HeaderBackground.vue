@@ -1,7 +1,6 @@
 <template>
   <div class="wrapper">
     <canvas ref="backgroundCanvas"></canvas>
-    <div class="noise-overlay"></div>
   </div>
 </template>
 
@@ -133,32 +132,5 @@ export default {
 <style lang="scss" scoped>
 .wrapper {
   position: relative;
-}
-
-.noise-overlay {
-  top: 0;
-  left: 0;
-  position: absolute;
-
-  width: 100%;
-  height: 100%;
-
-  background-size: 24px;
-  background-size: 24px;
-
-  @media only screen and (max-width: 1200px) {
-    background-size: 16px;
-    background-size: 16px;
-  }
-
-  @media only screen and (max-width: 700px) {
-    background-size: 8px;
-    background-size: 8px;
-  }
-
-  background-image: url('/noise.png');
-  background-repeat: repeat;
-
-  opacity: 0.2;
 }
 </style>

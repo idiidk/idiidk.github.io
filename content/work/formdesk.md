@@ -12,4 +12,6 @@ Here you will find information about our partner universities, based on the expe
 
 I primarily worked on the front-end of the site which is made in React. I worked in a team of about 5 students working closely together with the back-end team to realise the complete front-end of the site.
 
-The site is currently in production at: [https://formdesk-2.acc.theburo.nl/](https://formdesk-2.acc.theburo.nl/)
+<br/>
+
+The site is currently in production and available at the domain [formdesk-2.acc.theburo.nl](https://formdesk-2.acc.theburo.nl/).
