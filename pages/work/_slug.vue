@@ -10,7 +10,11 @@
         <nuxt-content class="content" :document="work" />
       </v-col>
       <v-col cols="12" md="6">
-        <v-img aspect-ratio="1" class="image" :src="'/work/' + work.img"></v-img>
+        <v-img
+          aspect-ratio="1"
+          class="image"
+          :src="'/work/' + work.img"
+        ></v-img>
       </v-col>
     </v-row>
   </v-container>
