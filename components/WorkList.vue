@@ -1,6 +1,6 @@
 <template>
   <v-row dense>
-    <v-col v-for="project of work" :key="project.slug" cols="12" md="6">
+    <v-col v-for="project of work" :key="project.slug" cols="12" md="6" xl="4">
       <div ref="projectWrappers" class="project-image-wrapper">
         <v-img
           aspect-ratio="1"
