@@ -1,9 +1,6 @@
 <template>
   <v-container>
-    <PageTitle
-      title="My work"
-      subtitle="Personal passion projects"
-    />
+    <PageTitle title="My work" subtitle="Personal passion projects" />
 
     <WorkList :work="work" />
   </v-container>

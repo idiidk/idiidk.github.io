@@ -6,8 +6,13 @@
     <span ref="animate-2" class="header-subtitle white--text">
       My name is Vincent Brouwer <br />
       I run a company called
-      <a class="white--text" href="https://codebrouwers.github.io/" target="_blank"><b>De Codebrouwers</b></a> based
-      in the Netherlands
+      <a
+        class="white--text"
+        href="https://codebrouwers.github.io/"
+        target="_blank"
+        ><b>De Codebrouwers</b></a
+      >
+      based in the Netherlands
     </span>
 
     <div ref="animate-3" class="buttons">
