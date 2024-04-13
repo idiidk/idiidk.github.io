@@ -22,7 +22,7 @@ export default {
   margin-bottom: 4rem;
 
   .title-text {
-    margin-bottom: -1rem;
+    margin-bottom: -0.5rem;
   }
 }
 </style>

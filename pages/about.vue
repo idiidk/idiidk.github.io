@@ -1,6 +1,6 @@
 <template>
   <v-container>
-    <PageTitle title="About me" subtitle="Pretty cliché but I like to code" />
+    <PageTitle title="About me" subtitle="Who is this" />
 
     <nuxt-content :document="about" />
   </v-container>

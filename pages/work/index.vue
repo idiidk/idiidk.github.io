@@ -2,7 +2,7 @@
   <v-container>
     <PageTitle
       title="My work"
-      subtitle="This is the work I'm most proud of, please take a look!"
+      subtitle="Personal passion projects"
     />
 
     <WorkList :work="work" />

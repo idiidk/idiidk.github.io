@@ -1,1 +1,5 @@
-Hello! My name is Vincent Brouwer and I'm from the Netherlands. I live in Zutphen which is a small town in the province of Gelderland. Most of my life I've been very interested in anything that had to do with computers, whether it was gaming or programming I was always looking for a way to make it do new things.
+My name is Vincent Brouwer, and I hail from the Netherlands. I reside in Zutphen, a quaint town nestled in the province of Gelderland.
+
+I have a passion for creating beauty and am enamored by the enduring nature of code's conceptual permanence. It's an art form that transcends time, destined to outlast me, for better or for worse. This is what fuels my drive.
+
+:)
