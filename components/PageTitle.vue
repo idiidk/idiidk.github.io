@@ -19,7 +19,7 @@ export default {
 .page-title {
   font-size: clamp(1rem, 4vw, 2rem);
   margin-top: 2rem;
-  margin-bottom: 4rem;
+  margin-bottom: 3rem;
 
   .title-text {
     margin-bottom: -0.5rem;

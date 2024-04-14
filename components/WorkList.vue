@@ -5,7 +5,7 @@
         <v-img
           aspect-ratio="1"
           class="image"
-          :src="'/work/' + project.img"
+          :src="'/image/work/' + project.img"
         ></v-img>
         <div
           @click="$router.push(`/work/${project.slug}`)"

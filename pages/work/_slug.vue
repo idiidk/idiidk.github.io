@@ -9,11 +9,12 @@
       <v-col cols="12" md="6">
         <nuxt-content class="content" :document="work" />
       </v-col>
-      <v-col cols="12" md="6">
+      <v-col cols="0" md="2"></v-col>
+      <v-col cols="12" md="4">
         <v-img
           aspect-ratio="1"
           class="image"
-          :src="'/work/' + work.img"
+          :src="'/image/work/' + work.img"
         ></v-img>
       </v-col>
     </v-row>
@@ -54,7 +55,7 @@ export default {
       align-items: flex-start;
 
       .back-button {
-        margin-top: -3rem;
+        margin-top: -2rem;
         margin-bottom: 4rem;
       }
     }
