@@ -45,6 +45,14 @@ watch(open, async (value) => {
   if (value) {
     showing.value = true;
     await nextTick();
+
+    // Before animating in, set the initial y position.
+    if (listRef.value && listRef.value.children) {
+      Array.from(listRef.value.children).forEach((el) => {
+        gsap.set(el, { y: -20, opacity: 0 }); // set initial state
+      });
+    }
+
     await animateOverlay(true);
     await animateListItems(true);
   } else {
@@ -107,7 +115,7 @@ const animateListItems = (animateIn: boolean): Promise<void> => {
 
     listTween.value = gsap.to(targets, {
       opacity: animateIn ? 1 : 0,
-      y: animateIn ? 0 : -20,
+      y: animateIn ? 0 : -20, //Animate Y to
       stagger: {
         each: staggerAmount,
         from: staggerFrom,
@@ -115,11 +123,7 @@ const animateListItems = (animateIn: boolean): Promise<void> => {
       },
       duration: animationDuration,
       ease: "power2.inOut",
-    });
-
-    // Resolve the promise when list animations complete.
-    listTween.value.eventCallback("onComplete", () => {
-      resolve();
+      onComplete: () => resolve(), // Resolve the promise when animation completes
     });
   });
 };
