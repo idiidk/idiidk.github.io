@@ -172,9 +172,17 @@ const animateListItems = (animateIn: boolean): Promise<void> => {
     h1 {
       font-family: "Funnel Display", sans-serif;
       font-optical-sizing: auto;
-      font-size: 4vw;
+      font-size: clamp(2rem, 4vw, 4rem);
       opacity: 0;
       margin: 0.15em 0;
+
+      cursor: pointer;
+
+      transition: all 0.2s;
+
+      &:hover {
+        color: rgba(255, 255, 255, 0.75);
+      }
     }
   }
 }

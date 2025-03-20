@@ -1,19 +1,15 @@
 <template>
   <div :class="['bar', { mobile: isMobile }]">
-    <v-img
-      inline
-      :width="`${isMobile ? '45' : '50'}px`"
-      :src="logo"
-      class="logo"
-    />
+    <Logo class="logo"></Logo>
     <v-btn
       @click="store.menu = !store.menu"
       icon
       color="white"
       class="menu-btn"
+      variant="outlined"
     >
       <v-icon v-if="!store.menu" icon="mdi-menu"></v-icon>
-      <v-icon v-else icon="mdi-menu-close"></v-icon>
+      <v-icon v-else icon="mdi-close"></v-icon>
     </v-btn>
   </div>
 </template>
