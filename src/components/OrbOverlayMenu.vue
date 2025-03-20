@@ -150,7 +150,7 @@ const animateListItems = (animateIn: boolean): Promise<void> => {
   .overlay {
     z-index: 8;
 
-    background: rgba(0, 0, 0, 0.5);
+    background: rgba(0, 0, 0, 0.25);
     backdrop-filter: blur(25px);
 
     position: absolute;
@@ -174,7 +174,7 @@ const animateListItems = (animateIn: boolean): Promise<void> => {
       font-optical-sizing: auto;
       font-size: 4vw;
       opacity: 0;
-      margin: 0.5em 0;
+      margin: 0.15em 0;
     }
   }
 }
