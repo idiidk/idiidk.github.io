@@ -17,7 +17,6 @@
 <script setup lang="ts">
 import { isMobile } from "@/utils/window.util";
 import { useAppStore } from "@/stores/app";
-import logo from "@/assets/idiidk.png";
 
 const store = useAppStore();
 </script>

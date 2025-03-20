@@ -60,6 +60,7 @@ class Blob {
   settlementProgress: number;
   isMobile: Ref<boolean>;
   isSettledRef: Ref<boolean>;
+  noShadow: boolean; // Added property for disabling shadow
 
   constructor(
     ctx: CanvasRenderingContext2D,
@@ -67,7 +68,8 @@ class Blob {
     sizeEasing: number,
     sizePercentage: number,
     isMobile: Ref<boolean>,
-    isSettledRef: Ref<boolean>
+    isSettledRef: Ref<boolean>,
+    noShadow: boolean // Added noShadow parameter
   ) {
     this.ctx = ctx;
     this.color = color;
@@ -76,6 +78,7 @@ class Blob {
     this.settlementProgress = 0;
     this.isMobile = isMobile;
     this.isSettledRef = isSettledRef;
+    this.noShadow = noShadow; // Set the noShadow property
 
     this.x = randomBetweenFloat(0, this.ctx.canvas.width);
     this.y = randomBetweenFloat(0, this.ctx.canvas.height);
@@ -167,8 +170,16 @@ class Blob {
 
     this.ctx.fillStyle = gradient;
     this.ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2, false);
-    this.ctx.shadowBlur = 20;
-    this.ctx.shadowColor = this.color;
+
+    // Conditionally apply shadow based on noShadow flag
+    if (!this.noShadow) {
+      this.ctx.shadowBlur = 20;
+      this.ctx.shadowColor = this.color;
+    } else {
+      this.ctx.shadowBlur = 0;
+      this.ctx.shadowColor = "transparent"; // Or any transparent color
+    }
+
     this.ctx.fill();
   }
 }
@@ -186,7 +197,9 @@ onMounted(() => {
   const ctx = canvas.getContext("2d")!; // Safe assertion, checked above
   ctx.globalCompositeOperation = "lighter"; // Enable better blending
 
-  const colors = [
+  const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent); //Detect if the browser is safari
+
+  const baseColors = [
     "#f72585",
     "#b5179e",
     "#7209b7",
@@ -197,7 +210,12 @@ onMounted(() => {
     "#4361ee",
     "#4895ef",
     "#4cc9f0",
-  ].sort(() => Math.random() - 0.5); // Shuffle array in place
+  ];
+
+  // Conditionally limit the number of blobs and disable shadows on Safari
+  const colors = isSafari
+    ? baseColors.slice(0, 10).sort(() => Math.random() - 0.5) // Shuffle array in place
+    : baseColors.sort(() => Math.random() - 0.5); // Shuffle array in place
 
   let blobs: Blob[] = [];
   let resizeDebounce: number;
@@ -231,7 +249,8 @@ onMounted(() => {
             sizeTransitionSpeed.value,
             sizePercentage,
             isMobile,
-            scattered
+            scattered,
+            isSafari // Pass the isSafari flag to disable shadow in Safari
           )
         );
       });
@@ -276,6 +295,10 @@ onMounted(() => {
   height: 100vh;
   overflow: hidden;
   position: relative;
+
+  canvas {
+    display: block;
+  }
 
   .orbs {
     position: relative;
