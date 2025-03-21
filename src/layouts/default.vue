@@ -5,7 +5,7 @@
     <OverlayMenu v-model="store.menu" class="menu"></OverlayMenu>
 
     <router-view v-slot="{ Component }">
-      <transition name="fade" mode="in-out">
+      <transition name="fade" mode="out-in">
         <component :is="Component" />
       </transition>
     </router-view>

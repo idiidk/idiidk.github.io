@@ -1,5 +1,5 @@
 <template>
-  <div :class="['bar', { mobile: isMobile }]">
+  <div ref="bar" :class="['bar', { mobile: isMobile }]">
     <Logo class="logo"></Logo>
     <v-btn
       @click="store.menu = !store.menu"
@@ -19,6 +19,11 @@ import { isMobile } from "@/utils/window.util";
 import { useAppStore } from "@/stores/app";
 
 const store = useAppStore();
+const bar = ref<HTMLDivElement>();
+
+onMounted(() => {
+  store.barHeight = bar.value?.clientHeight || 80;
+});
 </script>
 
 <style lang="scss" scoped>
