@@ -3,19 +3,20 @@
     <div class="overlay" ref="overlayRef"></div>
 
     <div class="list" ref="listRef">
-      <h1>Home</h1>
-      <h1>My Work</h1>
+      <h1 @click="navigateToRoute('/')">Home</h1>
+      <h1 @click="navigateToRoute('/work')">My Work</h1>
       <h1>About Me</h1>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
-import { ref, computed, watch, nextTick } from "vue";
+import type { RouteLocationRaw } from "vue-router";
 import gsap from "gsap";
 
-const props = defineProps<{ open: boolean }>();
-const open = computed(() => props.open);
+const router = useRouter();
+
+const model = defineModel<boolean>();
 
 const showing = ref(false);
 
@@ -25,10 +26,15 @@ const listRef = ref<HTMLDivElement | null>(null);
 const animationDuration = 0.5;
 const staggerAmount = 0.15;
 const overlayFadeInDuration = 0.3;
-const overlayFadeOutDuration = 1;
+const overlayFadeOutDuration = 0.3; // Reduced to match fadeIn for consistency
 
 const overlayTween = ref<gsap.core.Tween | null>(null);
 const listTween = ref<gsap.core.Tween | null>(null);
+
+const navigateToRoute = (to: RouteLocationRaw) => {
+  router.push(to);
+  model.value = false;
+};
 
 // Function to safely kill a tween
 const killTween = (tween: gsap.core.Tween | null) => {
@@ -37,7 +43,7 @@ const killTween = (tween: gsap.core.Tween | null) => {
   }
 };
 
-watch(open, async (value) => {
+watch(model, async (value) => {
   // Kill any existing tweens before starting new ones.
   killTween(overlayTween.value);
   killTween(listTween.value);
@@ -90,7 +96,7 @@ const animateOverlay = (animateIn: boolean): Promise<void> => {
     overlayTween.value = gsap.to(overlayRef.value, {
       duration: duration,
       opacity: animateIn ? 1 : 0,
-      ease: "power2.inOut",
+      ease: "linear", // Changed to linear
       onComplete: () => resolve(), // Resolve the promise when animation completes
     });
   });
@@ -115,14 +121,13 @@ const animateListItems = (animateIn: boolean): Promise<void> => {
 
     listTween.value = gsap.to(targets, {
       opacity: animateIn ? 1 : 0,
-      y: animateIn ? 0 : -20, //Animate Y to
+      y: 0,
       stagger: {
         each: staggerAmount,
         from: staggerFrom,
-        ease: "power2.inOut",
       },
       duration: animationDuration,
-      ease: "power2.inOut",
+      ease: "linear", // Changed to linear
       onComplete: () => resolve(), // Resolve the promise when animation completes
     });
   });

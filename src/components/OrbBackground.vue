@@ -227,6 +227,8 @@ onMounted(() => {
     ctx.canvas.height = windowHeight.value;
 
     resizeDebounce = setTimeout(() => {
+      if (blobs.length > 0) return;
+
       blobs = [];
       allSettled.value = false;
 

@@ -10,7 +10,8 @@ declare module 'vue' {
     AppBar: typeof import('./components/AppBar.vue')['default']
     Logo: typeof import('./components/Logo.vue')['default']
     OrbBackground: typeof import('./components/OrbBackground.vue')['default']
-    OrbOverlayMenu: typeof import('./components/OrbOverlayMenu.vue')['default']
+    OrbOverlayMenu: typeof import('./components/OverlayMenu.vue')['default']
+    OverlayMenu: typeof import('./components/OverlayMenu.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
   }
