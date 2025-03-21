@@ -5,9 +5,9 @@
     <OverlayMenu v-model="store.menu" class="menu"></OverlayMenu>
 
     <router-view v-slot="{ Component }">
-      <v-fade-transition>
-        <component :is="Component"></component>
-      </v-fade-transition>
+      <transition name="fade" mode="in-out">
+        <component :is="Component" />
+      </transition>
     </router-view>
   </v-main>
 </template>
@@ -21,5 +21,21 @@ const store = useAppStore();
 <style lang="scss" scoped>
 .menu {
   z-index: 8;
+}
+
+.fade-enter-from {
+  opacity: 0;
+}
+
+.fade-leave-to {
+  opacity: 0;
+}
+
+.fade-enter-active {
+  transition: opacity 0.5s ease-in-out;
+}
+
+.fade-leave-active {
+  transition: opacity 0.3s ease-in-out;
 }
 </style>

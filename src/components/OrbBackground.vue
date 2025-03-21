@@ -187,7 +187,6 @@ class Blob {
 // Lifecycle Hooks
 onBeforeUnmount(() => {
   rendering.value = false;
-  backgroundCanvas.value?.remove();
 });
 
 onMounted(() => {
