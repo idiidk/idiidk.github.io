@@ -14,6 +14,7 @@
   "dependencies": {
     "@mdi/font": "7.4.47",
     "@vueuse/core": "^13.0.0",
+    "@yeger/vue-masonry-wall": "^5.0.18",
     "core-js": "^3.37.1",
     "gsap": "^3.12.7",
     "roboto-fontface": "*",

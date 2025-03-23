@@ -13,8 +13,10 @@
 <script setup lang="ts">
 import type { RouteLocationRaw } from "vue-router";
 import gsap from "gsap";
+import { useAppStore } from "@/stores/app";
 
 const router = useRouter();
+const store = useAppStore();
 
 const model = defineModel<boolean>();
 
@@ -59,27 +61,20 @@ watch(model, async (value) => {
       });
     }
 
-    await animateOverlay(true);
-    await animateListItems(true);
+    store.menuPromise = Promise.all([
+      animateOverlay(true),
+      animateListItems(true),
+    ]);
+    await store.menuPromise;
   } else {
-    await animateListItems(false);
-    await animateOverlay(false);
-
-    // Delay hiding the element until the fadeOut is complete AND the item animations are complete.
-    await Promise.all([
+    store.menuPromise = Promise.all([
+      animateListItems(false).then(() => animateOverlay(false)),
       new Promise<void>((resolve) =>
         setTimeout(resolve, overlayFadeOutDuration * 1000)
       ),
-      new Promise<void>((resolve) => {
-        if (listTween.value) {
-          listTween.value.eventCallback("onComplete", () => {
-            resolve();
-          });
-        } else {
-          resolve(); // If there's no listTween, resolve immediately.
-        }
-      }),
     ]);
+    await store.menuPromise;
+
     showing.value = false;
   }
 });

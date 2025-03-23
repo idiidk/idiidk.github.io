@@ -7,8 +7,11 @@
 </template>
 
 <script setup lang="ts">
+import { useAppStore } from "@/stores/app";
 import { isMobile, windowHeight, windowWidth } from "@/utils/window.util";
 import { ref, computed, onMounted, onBeforeUnmount } from "vue";
+
+const store = useAppStore();
 
 // Configurable Parameters
 const BLOB_MOVE_SPEED = 0.01;
@@ -97,7 +100,7 @@ class Blob {
     this.easing = BLOB_MOVE_SPEED;
   }
 
-  update() {
+  update(deltaTime: number) {
     //Conditionally changes the speed:
     this.easing = this.isSettledRef.value
       ? BLOB_MOVE_SPEED
@@ -117,9 +120,13 @@ class Blob {
       this.targetRadius = screenSize;
     }
 
-    this.x = lerp(this.x, this.targetX, this.easing);
-    this.y = lerp(this.y, this.targetY, this.easing);
-    this.radius = lerp(this.radius, this.targetRadius, this.sizeEasing);
+    this.x = lerp(this.x, this.targetX, this.easing * deltaTime);
+    this.y = lerp(this.y, this.targetY, this.easing * deltaTime);
+    this.radius = lerp(
+      this.radius,
+      this.targetRadius,
+      this.sizeEasing * deltaTime
+    );
 
     const positionProgress =
       1 -
@@ -151,8 +158,8 @@ class Blob {
     }
   }
 
-  render() {
-    this.update();
+  render(deltaTime: number) {
+    this.update(deltaTime);
 
     this.ctx.beginPath();
     const gradient = this.ctx.createRadialGradient(
@@ -197,24 +204,10 @@ onMounted(() => {
   ctx.globalCompositeOperation = "lighter"; // Enable better blending
 
   const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent); //Detect if the browser is safari
-
-  const baseColors = [
-    "#f72585",
-    "#b5179e",
-    "#7209b7",
-    "#560bad",
-    "#480ca8",
-    "#3a0ca3",
-    "#3f37c9",
-    "#4361ee",
-    "#4895ef",
-    "#4cc9f0",
-  ];
-
   // Conditionally limit the number of blobs and disable shadows on Safari
   const colors = isSafari
-    ? baseColors.slice(0, 10).sort(() => Math.random() - 0.5) // Shuffle array in place
-    : baseColors.sort(() => Math.random() - 0.5); // Shuffle array in place
+    ? store.baseColors.slice(0, 10).sort(() => Math.random() - 0.5) // Shuffle array in place
+    : store.baseColors.sort(() => Math.random() - 0.5); // Shuffle array in place
 
   let blobs: Blob[] = [];
   let resizeDebounce: number;
@@ -265,8 +258,13 @@ onMounted(() => {
 
   handleSizeChange();
 
-  const render = () => {
+  let lastTime = 0;
+
+  const render = (time: number) => {
     if (!rendering.value) return;
+
+    const deltaTime = (time - lastTime) / 16.6666; // Convert to ~60fps units.  Can also use time - lastTime but adjusting the speed constants will be required.
+    lastTime = time;
 
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     ctx.fillStyle = "rgba(0,0,0,0.95)";
@@ -280,7 +278,7 @@ onMounted(() => {
       if (!blob.settled) {
         blob.sizeEasing = sizeTransitionSpeed.value;
       }
-      blob.render();
+      blob.render(deltaTime);
     });
 
     requestAnimationFrame(render);
