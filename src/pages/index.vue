@@ -7,3 +7,5 @@ import { useAppStore } from "@/stores/app";
 
 const store = useAppStore();
 </script>
+
+<style scoped></style>

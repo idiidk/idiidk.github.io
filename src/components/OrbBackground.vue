@@ -122,11 +122,17 @@ class Blob {
 
     this.x = lerp(this.x, this.targetX, this.easing * deltaTime);
     this.y = lerp(this.y, this.targetY, this.easing * deltaTime);
-    this.radius = lerp(
-      this.radius,
-      this.targetRadius,
-      this.sizeEasing * deltaTime
-    );
+
+    // Apply size easing only if not already settled or if scattering
+    if (!this.settled || !this.isSettledRef.value) {
+      this.radius = lerp(
+        this.radius,
+        this.targetRadius,
+        this.sizeEasing * deltaTime
+      );
+    } else {
+      this.radius = this.targetRadius; // Directly set to target if settled
+    }
 
     const positionProgress =
       1 -
@@ -263,12 +269,10 @@ onMounted(() => {
   const render = (time: number) => {
     if (!rendering.value) return;
 
-    const deltaTime = (time - lastTime) / 16.6666; // Convert to ~60fps units.  Can also use time - lastTime but adjusting the speed constants will be required.
+    const deltaTime = (time - lastTime) / 16.6666; // Convert to ~60fps units.
     lastTime = time;
 
     ctx.clearRect(0, 0, canvas.width, canvas.height);
-    ctx.fillStyle = "rgba(0,0,0,0.95)";
-    ctx.fillRect(0, 0, canvas.width, canvas.height);
 
     if (!allSettled.value) {
       allSettled.value = blobs.every((blob) => blob.settled);
