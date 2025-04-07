@@ -18,7 +18,7 @@ export const useWorkStore = defineStore("work", {
               clients (portfolio work, contact info, etc.). The site is designed
               to be user-friendly and visually appealing across all devices,
               from desktops to smartphones.`,
-        techStack: ["Wordpress", "Elementor", "PHP", "CSS3 / SCSS"],
+        techStack: ["WordPress", "Elementor", "PHP", "CSS3 / SCSS"],
         images: [home, work, buro],
         keyFeatures: [
           {
