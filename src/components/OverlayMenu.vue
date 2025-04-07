@@ -1,11 +1,11 @@
 <template>
   <div class="menu" v-if="showing">
-    <div class="overlay" ref="overlayRef"></div>
+    <div @click="model = false" class="overlay" ref="overlayRef"></div>
 
     <div class="list" ref="listRef">
-      <h1 @click="navigateToRoute('/')">Home</h1>
-      <h1 @click="navigateToRoute('/work')">My Work</h1>
-      <h1>About Me</h1>
+      <h1 @click.capture.prevent="navigateToRoute('/')">Home</h1>
+      <h1 @click.capture.prevent="navigateToRoute('/work')">My Work</h1>
+      <h1 @click.capture.prevent="navigateToRoute('/about')">About Me</h1>
     </div>
   </div>
 </template>

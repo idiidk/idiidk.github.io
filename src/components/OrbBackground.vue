@@ -22,6 +22,7 @@ const BLOB_SIZE_PERCENTAGE_MAX_MOBILE = 65;
 const BLOB_SIZE_PERCENTAGE_MIN_MOBILE = 45;
 const BLOB_SIZE_PERCENTAGE_MAX_DESKTOP = 50;
 const BLOB_SIZE_PERCENTAGE_MIN_DESKTOP = 35;
+const MAX_DELTA_TIME_FACTOR = 3;
 
 const rendering = ref(true);
 const backgroundCanvas = ref<HTMLCanvasElement>();
@@ -32,13 +33,11 @@ const sizeTransitionSpeed = computed(() =>
     : BLOB_SIZE_TRANSITION_SPEED_DESKTOP
 );
 
-//Helper to know when to stop checking
 const allSettled = ref(false);
 
 const props = defineProps<{ scattered: boolean }>();
 const scattered = computed(() => props.scattered);
 
-// Helper Functions
 const randomBetweenFloat = (min: number, max: number): number =>
   Math.random() * (max - min) + min;
 
@@ -266,11 +265,12 @@ onMounted(() => {
 
   let lastTime = 0;
 
-  const render = (time: number) => {
+  const render = (currentTime: number) => {
     if (!rendering.value) return;
 
-    const deltaTime = (time - lastTime) / 16.6666; // Convert to ~60fps units.
-    lastTime = time;
+    const elapsed = currentTime - lastTime;
+    const deltaTime = Math.min(elapsed / (1000 / 60), MAX_DELTA_TIME_FACTOR); // Convert to ~60fps units.
+    lastTime = currentTime;
 
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 

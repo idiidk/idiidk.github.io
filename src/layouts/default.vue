@@ -1,8 +1,8 @@
 <template>
   <AppBar></AppBar>
 
-  <v-main>
-    <OverlayMenu v-model="store.menu" class="menu"></OverlayMenu>
+  <v-main class="main">
+    <OverlayMenu v-model="appStore.menu" class="menu"></OverlayMenu>
 
     <router-view v-slot="{ Component }">
       <transition name="fade" mode="out-in">
@@ -15,7 +15,7 @@
 <script lang="ts" setup>
 import { useAppStore } from "@/stores/app";
 
-const store = useAppStore();
+const appStore = useAppStore();
 </script>
 
 <style lang="scss" scoped>

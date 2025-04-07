@@ -1,13 +1,19 @@
 <template>
   <v-container class="wrapper">
-    <masonry-wall :items="items" :ssr-columns="1" :column-width="300" :gap="32">
+    <masonry-wall
+      :items="workStore.work"
+      :ssr-columns="1"
+      :column-width="300"
+      :gap="32"
+    >
       <template #default="{ item, index }">
         <div class="card-wrapper">
           <v-card
-            :color="store.baseColors[index]"
+            :color="appStore.baseColors[index]"
+            :class="{ 'fade-in': fadeIn[index] }"
+            @click="$router.push(`/work/${item.slug}`)"
             variant="tonal"
             class="card"
-            :class="{ 'fade-in': fadeIn[index] }"
           >
             <div class="image-wrapper">
               <v-img class="image" :src="item.src"></v-img>
@@ -26,33 +32,21 @@
 
 <script setup lang="ts">
 import MasonryWall from "@yeger/vue-masonry-wall";
-import { ref, onMounted, computed } from "vue"; // Import onMounted
-
-import b302 from "@/assets/work/b302.nl.png";
-import kahootTools from "@/assets/work/kahoot-tools.png";
 
 import { useAppStore } from "@/stores/app";
+import { useWorkStore } from "@/stores/work";
 
-const store = useAppStore();
-const barHeight = computed(() => `${store.barHeight + 32}px`);
+const appStore = useAppStore();
+const workStore = useWorkStore();
 
-const items = [
-  {
-    title: "B302 - Website",
-    description: "Blah ".repeat(25),
-    src: b302,
-  },
-  { title: "Kahoot Tools", description: "Blah ".repeat(25), src: kahootTools },
-];
-
-const fadeIn = ref(Array(items.length).fill(false));
+const fadeIn = ref(Array(workStore.work.length).fill(false));
 
 onMounted(async () => {
-  if (store.menuPromise) {
-    await Promise.all([store.menuPromise]);
+  if (appStore.menuPromise) {
+    await Promise.all([appStore.menuPromise]);
   }
 
-  items.forEach((_, index) => {
+  workStore.work.forEach((_, index) => {
     setTimeout(() => {
       fadeIn.value[index] = true;
     }, 100 * index); // Adjust delay (100ms per item) as needed
@@ -62,9 +56,6 @@ onMounted(async () => {
 
 <style lang="scss" scoped>
 .wrapper {
-  margin-top: v-bind(barHeight);
-  margin-bottom: v-bind(barHeight);
-
   padding-left: 1rem !important;
   padding-right: 1rem !important;
 
