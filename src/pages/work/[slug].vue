@@ -97,16 +97,17 @@
                 {{ tech }}
               </v-chip>
             </div>
+          </section>
 
+          <section class="mt-16">
             <v-btn
-              class="mt-16"
-              size="large"
               href="https://b302.nl"
               target="_blank"
               rel="noopener noreferrer"
               prepend-icon="mdi-open-in-new"
               variant="tonal"
               color="primary"
+              size="small"
             >
               <span class="text-funnel">visit the website</span>
             </v-btn>
