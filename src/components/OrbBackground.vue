@@ -210,9 +210,10 @@ onMounted(() => {
 
   const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent); //Detect if the browser is safari
   // Conditionally limit the number of blobs and disable shadows on Safari
+
   const colors = isSafari
-    ? store.baseColors.slice(0, 10).sort(() => Math.random() - 0.5) // Shuffle array in place
-    : store.baseColors.sort(() => Math.random() - 0.5); // Shuffle array in place
+    ? [...store.baseColors.slice(0, 10)].sort(() => Math.random() - 0.5) // Shuffle a copy
+    : [...store.baseColors].sort(() => Math.random() - 0.5);
 
   let blobs: Blob[] = [];
   let resizeDebounce: number;

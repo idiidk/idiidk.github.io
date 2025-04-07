@@ -3,9 +3,18 @@
     <div @click="model = false" class="overlay" ref="overlayRef"></div>
 
     <div class="list" ref="listRef">
-      <h1 @click.capture.prevent="navigateToRoute('/')">Home</h1>
-      <h1 @click.capture.prevent="navigateToRoute('/work')">My Work</h1>
-      <h1 @click.capture.prevent="navigateToRoute('/about')">About Me</h1>
+      <h1 class="text-funnel" @click.capture.prevent="navigateToRoute('/')">
+        Home
+      </h1>
+      <h1 class="text-funnel" @click.capture.prevent="navigateToRoute('/work')">
+        My Work
+      </h1>
+      <h1
+        class="text-funnel"
+        @click.capture.prevent="navigateToRoute('/about')"
+      >
+        About Me
+      </h1>
     </div>
   </div>
 </template>
@@ -170,7 +179,6 @@ const animateListItems = (animateIn: boolean): Promise<void> => {
     flex-direction: column;
 
     h1 {
-      font-family: "Funnel Display", sans-serif;
       font-optical-sizing: auto;
       font-size: clamp(2rem, 4vw, 4rem);
       opacity: 0;

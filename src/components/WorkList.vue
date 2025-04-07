@@ -1,7 +1,7 @@
 <template>
   <v-container class="wrapper">
     <masonry-wall
-      :items="workStore.work"
+      :items="props.work"
       :ssr-columns="1"
       :column-width="300"
       :gap="32"
@@ -16,12 +16,14 @@
             class="card"
           >
             <div class="image-wrapper">
-              <v-img class="image" :src="item.src"></v-img>
+              <v-img class="image" :src="item.images[0]"></v-img>
             </div>
 
-            <v-card-title class="title">{{ item.title }}</v-card-title>
+            <v-card-title class="title text-funnel">{{
+              item.title
+            }}</v-card-title>
             <v-card-text class="description">{{
-              item.description
+              item.overview.slice(0, 128) + "..."
             }}</v-card-text>
           </v-card>
         </div>
@@ -34,19 +36,22 @@
 import MasonryWall from "@yeger/vue-masonry-wall";
 
 import { useAppStore } from "@/stores/app";
-import { useWorkStore } from "@/stores/work";
+import type { WorkModel } from "@/models/work.model";
 
 const appStore = useAppStore();
-const workStore = useWorkStore();
 
-const fadeIn = ref(Array(workStore.work.length).fill(false));
+const props = defineProps<{
+  work: WorkModel[];
+}>();
+
+const fadeIn = ref(Array(props.work.length).fill(false));
 
 onMounted(async () => {
   if (appStore.menuPromise) {
     await Promise.all([appStore.menuPromise]);
   }
 
-  workStore.work.forEach((_, index) => {
+  props.work.forEach((_, index) => {
     setTimeout(() => {
       fadeIn.value[index] = true;
     }, 100 * index); // Adjust delay (100ms per item) as needed
@@ -72,10 +77,6 @@ onMounted(async () => {
 
     .card {
       opacity: 0;
-
-      .title {
-        font-family: "Funnel Display", sans-serif;
-      }
 
       .title,
       .description {

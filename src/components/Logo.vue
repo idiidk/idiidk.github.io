@@ -4,7 +4,7 @@
       store.menu = false;
       $router.push('/');
     "
-    class="logo"
+    class="logo text-funnel"
   >
     idiidk
   </h1>
@@ -18,7 +18,6 @@ const store = useAppStore();
 
 <style scoped>
 .logo {
-  font-family: "Funnel Display", sans-serif;
   font-optical-sizing: auto;
 
   font-weight: 500;
