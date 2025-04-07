@@ -10,6 +10,7 @@ export const useWorkStore = defineStore("work", {
     work: [
       {
         slug: "b302",
+        title: "B302 - Website",
         overview: `Helped develop a clean, modern, and responsive website for the
               creative media agency B302, located in Arnhem. The primary goal
               was to create an attractive online presence that showcases the

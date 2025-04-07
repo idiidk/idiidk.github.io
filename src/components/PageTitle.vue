@@ -8,7 +8,7 @@ const props = defineProps<{ title?: string }>();
 
 <style scoped>
 .title {
-  font-size: clamp(2rem, 4vw, 4rem) !important;
+  font-size: clamp(3rem, 4vw, 4rem) !important;
   font-weight: 500;
 }
 </style>

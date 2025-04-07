@@ -3,16 +3,19 @@
     <v-container>
       <v-row justify="center">
         <v-col cols="12" md="10" lg="8">
-          <PageTitle title="B302 - Website"></PageTitle>
-          <v-btn
-            href="https://b302.nl"
-            target="_blank"
-            rel="noopener noreferrer"
-            icon="mdi-open-in-new"
-            variant="outlined"
-            size="small"
-          >
-          </v-btn>
+          <div class="header">
+            <PageTitle :title="work?.title"></PageTitle>
+
+            <v-btn
+              class="href"
+              href="https://b302.nl"
+              target="_blank"
+              rel="noopener noreferrer"
+              icon="mdi-open-in-new"
+              variant="text"
+            >
+            </v-btn>
+          </div>
 
           <v-card elevation="4" class="my-16">
             <v-carousel cycle height="400" hide-delimiters show-arrows="hover">
@@ -99,18 +102,18 @@
             </div>
           </section>
 
-          <section class="mt-16">
-            <v-btn
+          <section class="mt-8">
+            <v-chip
+              label
+              variant="tonal"
               href="https://b302.nl"
               target="_blank"
               rel="noopener noreferrer"
               prepend-icon="mdi-open-in-new"
-              variant="tonal"
               color="primary"
-              size="small"
             >
-              <span class="text-funnel">visit the website</span>
-            </v-btn>
+              <span class="text-funnel">Visit the live product</span>
+            </v-chip>
           </section>
         </v-col>
       </v-row>
@@ -155,7 +158,18 @@ const nextBaseColor = () => {
 };
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
+.header {
+  display: flex;
+  align-items: center;
+
+  gap: 1rem;
+
+  .href {
+    transform: translateY(5px);
+  }
+}
+
 :deep(.carousel-img-top-aligned .v-img__img--cover) {
   /* Use object-position for <img> tags with object-fit: cover */
   object-position: top center !important; /* Or top left, top */
