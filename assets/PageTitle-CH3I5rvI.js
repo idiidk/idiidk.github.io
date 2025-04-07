@@ -1,0 +1,1 @@
+import{d as o,c as s,o as n,O as _}from"./index-Cb7dsp7_.js";import{_ as c}from"./_plugin-vue_export-helper-CAZs68Bo.js";const a={class:"title text-funnel"},p=o({__name:"PageTitle",props:{title:{}},setup(t){const e=t;return(r,i)=>(n(),s("h1",a,_(e.title),1))}}),d=c(p,[["__scopeId","data-v-d01c01a9"]]);export{d as _};
