@@ -2,6 +2,7 @@
   <AppBarMarginContainer>
     <v-container>
       <PageTitle title="About me"></PageTitle>
+      <p></p>
     </v-container>
   </AppBarMarginContainer>
 </template>
