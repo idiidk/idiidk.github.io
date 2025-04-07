@@ -86,11 +86,10 @@
 
           <section class="mb-8">
             <h2 class="text-h4 mb-6 text-funnel">Technology Stack</h2>
-            <div>
+            <div class="tech-stack-chips">
               <v-chip
                 v-for="(tech, i) in work?.techStack"
                 :key="i"
-                class="mr-3"
                 :color="nextBaseColor()"
                 label
                 variant="flat"
@@ -165,5 +164,11 @@ const nextBaseColor = () => {
 .carousel-img-top-aligned {
   height: 100%;
   width: 100%;
+}
+
+.tech-stack-chips {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
 }
 </style>
