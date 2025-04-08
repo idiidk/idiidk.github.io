@@ -17,37 +17,15 @@
             </v-btn>
           </div>
 
-          <v-card elevation="4" class="my-16">
-            <v-carousel cycle height="400" hide-delimiters show-arrows="hover">
-              <template v-slot:prev="{ props }">
-                <v-btn
-                  v-bind="props"
-                  icon="mdi-menu-left"
-                  variant="outlined"
-                  size="small"
-                ></v-btn>
-              </template>
-
-              <template v-slot:next="{ props }">
-                <v-btn
-                  v-bind="props"
-                  icon="mdi-menu-right"
-                  variant="outlined"
-                  size="small"
-                ></v-btn>
-              </template>
-
-              <v-carousel-item v-for="(item, i) in work?.images" :key="i">
-                <v-img
-                  :src="item"
-                  cover
-                  height="100%"
-                  class="carousel-img-top-aligned"
-                >
-                </v-img>
-              </v-carousel-item>
-            </v-carousel>
-          </v-card>
+          <section class="my-16">
+            <swiper-container autoplay-delay="2500" effect="fade">
+              <swiper-slide v-for="image of work?.images">
+                <v-card>
+                  <v-img :src="image"></v-img>
+                </v-card>
+              </swiper-slide>
+            </swiper-container>
+          </section>
 
           <section class="mb-8">
             <h2 class="text-h4 mb-4 text-funnel">Project Overview</h2>
@@ -122,10 +100,12 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from "vue";
+import { register } from "swiper/element/bundle";
 import { useAppStore } from "@/stores/app";
 import { useWorkStore } from "@/stores/work";
 import type { WorkModel } from "@/models/work.model";
+
+register();
 
 const appStore = useAppStore();
 const workStore = useWorkStore();
@@ -173,12 +153,6 @@ const nextBaseColor = () => {
 :deep(.carousel-img-top-aligned .v-img__img--cover) {
   /* Use object-position for <img> tags with object-fit: cover */
   object-position: top center !important; /* Or top left, top */
-}
-
-/* Ensure v-img takes full height */
-.carousel-img-top-aligned {
-  height: 100%;
-  width: 100%;
 }
 
 .tech-stack-chips {
