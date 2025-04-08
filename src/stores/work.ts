@@ -15,6 +15,7 @@ export const useWorkStore = defineStore("work", {
       {
         slug: "maatschapp-ai",
         title: "Maatschapp.ai - Social Impact AI Platform",
+        href: "https://maatschapp.ai",
         overview: `Developed Maatschapp.ai, an AI-powered platform by Uitvoeringsbrigade, designed to empower professionals in the Dutch social domain. The primary goal is to reduce administrative burden and enhance the quality of support for citizens, particularly those facing disadvantages, allowing professionals to focus on impactful work ('Tijd voor wat telt'). The platform features a suite of specialized AI tools aimed at improving screening, planning, collaboration, and analysis within the social sector. These tools are set to be fully integrated into the companion platform GrowPad by 2025 for a seamless workflow.`,
         techStack: [
           "AI / Machine Learning",
@@ -47,6 +48,7 @@ export const useWorkStore = defineStore("work", {
       {
         slug: "b302",
         title: "B302 - Website",
+        href: "https://b302.nl",
         overview: `Helped develop a clean, modern, and responsive website for the
               creative media agency B302, located in Arnhem. The primary goal
               was to create an attractive online presence that showcases the

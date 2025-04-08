@@ -7,8 +7,8 @@
             <PageTitle :title="work?.title"></PageTitle>
 
             <v-btn
+              :href="work?.href"
               class="href"
-              href="https://b302.nl"
               target="_blank"
               rel="noopener noreferrer"
               icon="mdi-open-in-new"
@@ -82,9 +82,9 @@
 
           <section class="mt-8">
             <v-chip
+              :href="work?.href"
               label
               variant="tonal"
-              href="https://b302.nl"
               target="_blank"
               rel="noopener noreferrer"
               prepend-icon="mdi-open-in-new"
