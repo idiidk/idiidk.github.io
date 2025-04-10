@@ -8,6 +8,7 @@ export const useSocialStore = defineStore("social", {
       "https://steamcommunity.com/id/idiidk",
       "https://linkedin.com/in/idiidk",
       "https://soundcloud.com/idiidk",
+      "https://open.spotify.com/artist/5SIPahYMtvwQdrwvGJ4N1w",
     ],
   }),
 });
