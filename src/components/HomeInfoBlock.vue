@@ -35,7 +35,7 @@ onMounted(() => {
 
   gsap.to(wrapper.value, {
     opacity: 1,
-    duration: 5,
+    duration: 3,
   });
 });
 </script>
