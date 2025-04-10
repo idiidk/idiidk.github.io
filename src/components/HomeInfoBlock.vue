@@ -1,5 +1,5 @@
 <template>
-  <div class="wrapper" :class="{ mobile: isMobile }">
+  <div ref="wrapper" class="wrapper" :class="{ mobile: isMobile }">
     <b class="text-funnel name">Vincent Brouwer</b>
     <p>
       founder of <a href="https://codebrouwers.github.io/">De Codebrouwers</a>
@@ -12,8 +12,11 @@
 <script setup lang="ts">
 import { isMobile } from "@/utils/window.util";
 import { useSocialStore } from "@/stores/social";
+import gsap from "gsap";
 
 const socialStore = useSocialStore();
+
+const wrapper = ref<HTMLDivElement>();
 
 let currentLink = 0;
 const openRandomSocial = () => {
@@ -24,10 +27,23 @@ const openRandomSocial = () => {
 
   window.open(randomLink, "_blank");
 };
+
+onMounted(() => {
+  if (!wrapper.value) {
+    return console.error("HomeInfoBlock wrapper ref not found");
+  }
+
+  gsap.to(wrapper.value, {
+    opacity: 1,
+    duration: 5,
+  });
+});
 </script>
 
 <style lang="scss" scoped>
 .wrapper {
+  opacity: 0;
+
   a {
     color: white;
   }
