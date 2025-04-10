@@ -294,6 +294,10 @@ onMounted(() => {
 </script>
 
 <style lang="scss" scoped>
+* {
+  pointer-events: none;
+}
+
 .wrapper {
   width: 100vw;
   height: 100vh;
@@ -301,7 +305,9 @@ onMounted(() => {
   position: relative;
 
   canvas {
+    position: relative;
     display: block;
+    z-index: 1;
   }
 
   .orbs {

@@ -1,11 +1,6 @@
 <template>
   <v-container class="wrapper">
-    <masonry-wall
-      :items="props.work"
-      :ssr-columns="1"
-      :column-width="300"
-      :gap="32"
-    >
+    <masonry-wall :items="props.work" :ssr-columns="1" :gap="32">
       <template #default="{ item, index }">
         <div class="card-wrapper">
           <v-card

@@ -9,6 +9,7 @@ declare module 'vue' {
   export interface GlobalComponents {
     AppBar: typeof import('./components/AppBar.vue')['default']
     AppBarMarginContainer: typeof import('./components/AppBarMarginContainer.vue')['default']
+    HomeInfoBlock: typeof import('./components/HomeInfoBlock.vue')['default']
     HoverNavSwiper: typeof import('./components/HoverNavSwiper.vue')['default']
     Logo: typeof import('./components/Logo.vue')['default']
     MasonryLayout: typeof import('./components/MasonryLayout.vue')['default']
