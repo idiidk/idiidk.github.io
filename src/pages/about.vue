@@ -4,13 +4,13 @@
       <PageTitle title="About me"></PageTitle>
 
       <v-row class="mt-2 mb-8">
-        <v-col cols="6" md="4">
+        <v-col v-if="!isMobile" cols="12" sm="6" md="4">
           <v-card>
             <v-img :src="vincent1"></v-img>
           </v-card>
         </v-col>
 
-        <v-col cols="6" md="4">
+        <v-col cols="12" sm="6" md="4">
           <v-card>
             <v-img :src="vincent2"></v-img>
           </v-card>
@@ -82,6 +82,8 @@
 <script setup lang="ts">
 import vincent1 from "@/assets/about/vincent-1-min.jpg";
 import vincent2 from "@/assets/about/vincent-2-min.jpg";
+
+import { isMobile } from "@/utils/window.util";
 </script>
 
 <style lang="scss" scoped>
