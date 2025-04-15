@@ -31,3 +31,4 @@ jobs:
           publish_dir: ./dist # Or your build output directory (e.g., ./dist, ./public)
           user_name: "github-actions[bot]" # Optional, but good practice
           user_email: "github-actions[bot]@users.noreply.github.com" # Optional
+          cname: idiidk.nl
