@@ -7,6 +7,7 @@
             <PageTitle :title="work?.title"></PageTitle>
 
             <v-btn
+              v-if="!isMobile"
               :href="work?.href"
               class="href"
               target="_blank"
@@ -102,6 +103,7 @@
 
 <script setup lang="ts">
 import { register } from "swiper/element/bundle";
+import { isMobile } from "@/utils/window.util";
 import { useAppStore } from "@/stores/app";
 import { useWorkStore } from "@/stores/work";
 import type { WorkModel } from "@/models/work.model";
