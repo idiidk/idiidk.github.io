@@ -10,9 +10,10 @@
 </template>
 
 <script setup lang="ts">
+import gsap from "gsap";
+
 import { isMobile } from "@/utils/window.util";
 import { useSocialStore } from "@/stores/social";
-import gsap from "gsap";
 
 const socialStore = useSocialStore();
 

@@ -28,7 +28,7 @@
           </section>
 
           <section class="mb-8">
-            <h2 class="text-h4 mb-4 text-funnel">Project Overview</h2>
+            <h2 class="text-h4 mb-4 text-funnel">{{ work?.overviewTitle }}</h2>
             <p class="text-body-1">
               {{ work?.overview }}
             </p>
@@ -37,10 +37,10 @@
           <v-divider class="my-16"></v-divider>
 
           <section class="mb-8">
-            <h2 class="text-h4 mb-6 text-funnel">Key Features</h2>
+            <h2 class="text-h4 mb-6 text-funnel">{{ work?.cardsTitle }}</h2>
             <v-row>
               <v-col
-                v-for="(feature, i) in work?.keyFeatures"
+                v-for="(card, i) in work?.cards"
                 :key="i"
                 cols="12"
                 sm="6"
@@ -49,14 +49,14 @@
                 <v-card outlined variant="tonal" :color="nextBaseColor()">
                   <div class="d-flex align-center pa-2">
                     <v-icon left class="ma-2" color="white">{{
-                      feature.icon
+                      card.icon
                     }}</v-icon>
                     <span class="font-weight-medium text-body-1 text-white">{{
-                      feature.title
+                      card.title
                     }}</span>
                   </div>
                   <v-card-text class="pt-0 text-body-2 text-white">{{
-                    feature.description
+                    card.description
                   }}</v-card-text>
                 </v-card>
               </v-col>
@@ -66,10 +66,10 @@
           <v-divider class="my-16"></v-divider>
 
           <section class="mb-8">
-            <h2 class="text-h4 mb-6 text-funnel">Technology Stack</h2>
-            <div class="tech-stack-chips">
+            <h2 class="text-h4 mb-6 text-funnel">{{ work?.chipsTitle }}</h2>
+            <div class="chips">
               <v-chip
-                v-for="(tech, i) in work?.techStack"
+                v-for="(tech, i) in work?.chips"
                 :key="i"
                 :color="nextBaseColor()"
                 label
@@ -82,6 +82,7 @@
 
           <section class="mt-8">
             <v-chip
+              v-if="work?.href"
               :href="work?.href"
               label
               variant="tonal"
@@ -155,7 +156,7 @@ const nextBaseColor = () => {
   object-position: top center !important; /* Or top left, top */
 }
 
-.tech-stack-chips {
+.chips {
   display: flex;
   gap: 0.75rem;
   flex-wrap: wrap;

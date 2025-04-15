@@ -1,4 +1,4 @@
-interface WorkKeyFeatureModel {
+interface CardModel {
   icon: string;
   title: string;
   description: string;
@@ -9,7 +9,10 @@ export interface WorkModel {
   title: string;
   href: string;
   images: string[];
+  overviewTitle: string;
   overview: string;
-  keyFeatures: WorkKeyFeatureModel[];
-  techStack: string[];
+  cardsTitle: string;
+  cards: CardModel[];
+  chipsTitle: string;
+  chips: string[];
 }
