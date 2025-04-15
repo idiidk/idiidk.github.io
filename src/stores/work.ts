@@ -18,9 +18,62 @@ import podwalkappnlHome from "@/assets/work/podwalkapp.nl/home.png";
 import podwalkappnlRoute from "@/assets/work/podwalkapp.nl/route.png";
 import podwalkappnlSettings from "@/assets/work/podwalkapp.nl/settings.png";
 
+import vooreenprikkieconlPreference from "@/assets/work/vooreenprikkie.co.nl/preferences.png";
+import vooreenprikkieconlPlan from "@/assets/work/vooreenprikkie.co.nl/plan.png";
+import vooreenprikkieconlPlanItem from "@/assets/work/vooreenprikkie.co.nl/plan-item.png";
+import vooreenprikkieconlPlanList from "@/assets/work/vooreenprikkie.co.nl/plan-list.png";
+import vooreenprikkieconlSearch from "@/assets/work/vooreenprikkie.co.nl/search.png";
+
 export const useWorkStore = defineStore("work", {
   state: () => ({
     work: [
+      {
+        slug: "voor-een-prikkie",
+        title: "Voor een Prikkie - Budget Meal Planner",
+        href: "https://www.han.nl/nieuws/2024/06/terugblik-succesvolle-zomereditie-open-up-your-talent/",
+        overviewTitle: "Project Overview & Achievements",
+        overview:
+          "I developed 'Voor een Prikkie' to tackle the daily stress of deciding 'What's for dinner?' while simultaneously helping users save money. As a HAN student project, I built this web application to empower users to generate personalized weekly meal plans based on a fixed budget and individual preferences. The application intelligently searches a database containing thousands of recipes and determines, per recipe, which supermarket currently offers the cheapest ingredients. Using this data, it compiles a weekly plan that adheres to the user's budget. It can even suggest visiting multiple supermarkets for optimal savings, although users can specify in their preferences if they prefer sticking to one. I presented Voor een Prikkie at the HAN Open Up event in 2024, where I was honored to win the Technology Award for the project. During the event, I also participated in the INNOVATE Experience and was nominated for the Most Innovative Student of the Netherlands.",
+        chipsTitle: "Technology & Concepts",
+        chips: [
+          "Web Application Development",
+          "Database Management",
+          "Price Comparison Algorithm",
+          "Budget Optimization Logic",
+          "User Preference Management",
+          "Recipe Data Integration",
+          "Frontend Development",
+          "Backend Development",
+        ],
+        images: [
+          vooreenprikkieconlPreference,
+          vooreenprikkieconlPlan,
+          vooreenprikkieconlPlanItem,
+          vooreenprikkieconlPlanList,
+          vooreenprikkieconlSearch,
+        ],
+        cardsTitle: "Key Features I Implemented",
+        cards: [
+          {
+            icon: "mdi-cash-multiple",
+            title: "Budget-Based Meal Planning",
+            description:
+              "Generates weekly meal plans tailored to a user's specific budget and dietary/personal preferences, removing meal-time stress.",
+          },
+          {
+            icon: "mdi-store-search-outline",
+            title: "Smart Supermarket Pricing",
+            description:
+              "Dynamically identifies the cheapest supermarket for the ingredients needed for each recipe in the plan, maximizing potential savings.",
+          },
+          {
+            icon: "mdi-cogs",
+            title: "Flexible Shopping Strategy",
+            description:
+              "Allows users to configure preferences, including whether the app should optimize across multiple supermarkets or stick to a single one.",
+          },
+        ],
+      },
       {
         slug: "just-prepare",
         title: "Just Prepare - Just Energy Transition Research",
