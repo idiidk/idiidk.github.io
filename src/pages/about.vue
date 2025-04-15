@@ -47,7 +47,7 @@
       <p>
         But my drive to create extends beyond the digital realm of web
         applications. I'm also involved in the world of electronic music,
-        specifically producing Drum and Bass music, also under the name
+        specifically producing Drum and Bass, also under the name
         <a
           target="_blank"
           rel="noopener noreferrer"
