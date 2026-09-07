@@ -8,6 +8,8 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
 
     steps:
       - name: Checkout code
@@ -27,7 +29,7 @@ jobs:
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
-          github_token: ${{ secrets.DEPLOY_KEY }} # Use the PAT secret
+          github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./dist # Or your build output directory (e.g., ./dist, ./public)
           user_name: "github-actions[bot]" # Optional, but good practice
           user_email: "github-actions[bot]@users.noreply.github.com" # Optional
