@@ -43,6 +43,13 @@ import vooreenprikkieconlPlanThumb from "@/assets/work/vooreenprikkie.co.nl/plan
 import justpreparenlHomeThumb from "@/assets/work/justprepare.nl/home.webp?w=720;1440&format=webp&as=srcset";
 import b302nlHomeThumb from "@/assets/work/b302.nl/home.webp?w=720;1440&format=webp&as=srcset";
 
+import lasersDesk from "@/assets/work/lasers/desk.webp?as=metadata";
+import lasersThumb from "@/assets/work/lasers/vibes-poster.webp?w=720;768&format=webp&as=srcset";
+import lasersVibes from "@/assets/work/lasers/vibes.mp4";
+import lasersVibesPoster from "@/assets/work/lasers/vibes-poster.webp";
+import lasersLive from "@/assets/work/lasers/live.mp4";
+import lasersLivePoster from "@/assets/work/lasers/live-poster.webp";
+
 export const useWorkStore = defineStore("work", {
   state: () => ({
     work: [
@@ -167,6 +174,61 @@ export const useWorkStore = defineStore("work", {
             body: [
               "It's free, non-commercial and unofficial. Install it, try it, and if it breaks something, the logs say what.",
             ],
+          },
+        ],
+      },
+      {
+        slug: "lasers",
+        title: "Lasers",
+        tagline: "Laser shows at drum and bass nights, as a freelancer for Holy Beams.",
+        accent: "#9d5cff",
+        year: "2026",
+        role: "Freelance laser operator",
+        client: "Holy Beams",
+        stack: [],
+        href: "https://holybeams.com/",
+        hrefLabel: "holybeams.com",
+        thumb: lasersThumb,
+        cover: { image: lasersDesk, frame: "bare" },
+        coverVideo: { src: lasersVibes, poster: lasersVibesPoster },
+        blocks: [
+          {
+            type: "text",
+            body: [
+              "Not everything I do happens on a screen. Every now and then Holy Beams, a laser company from Arnhem, books me as a freelance operator, and I spend the night behind the desk playing lasers along with the music.",
+              "It's live work. You listen for what's coming, watch the DJ, and hit the right look the moment the drop lands. When it works, the whole room feels it.",
+            ],
+          },
+          {
+            type: "shot",
+            image: lasersDesk,
+            frame: "bare",
+            caption: "Behind the desk at Luxor Live, Arnhem.",
+          },
+          {
+            type: "points",
+            heading: "Recent nights",
+            items: [
+              {
+                title: "Moonshine 10YRS",
+                body: "Luxor Live, Arnhem · 19 September 2026. Ten years of Moonshine, celebrated with a daytime rave. I operated the lasers, and it was my latest gig.",
+              },
+              {
+                title: "Fiber Open Air",
+                body: "Openluchttheater de Goffert, Nijmegen · 5 September 2026. Part of the crew on the laser tunnel.",
+              },
+              {
+                title: "Moonshine ft. Arcando + Atmos b2b Formula",
+                body: "Luxor Live, Arnhem · 20 March 2026. I operated the lasers here too.",
+              },
+            ],
+          },
+          {
+            type: "video",
+            src: lasersLive,
+            poster: lasersLivePoster,
+            portrait: true,
+            caption: "Running the lasers live. With sound.",
           },
         ],
       },

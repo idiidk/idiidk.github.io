@@ -46,7 +46,22 @@
         </dl>
       </header>
 
+      <figure
+        v-if="work.coverVideo"
+        class="wide cover cover-video"
+      >
+        <video
+          :src="work.coverVideo.src"
+          :poster="work.coverVideo.poster"
+          autoplay
+          muted
+          loop
+          playsinline
+          aria-hidden="true"
+        />
+      </figure>
       <WorkShot
+        v-else
         class="wide cover"
         v-bind="work.cover"
         eager
@@ -144,8 +159,19 @@
         <figure
           v-else-if="block.type === 'video'"
           class="wide video"
+          :class="{ portrait: block.portrait }"
         >
           <video
+            v-if="block.loop"
+            :src="block.src"
+            :poster="block.poster"
+            autoplay
+            muted
+            loop
+            playsinline
+          />
+          <video
+            v-else
             :src="block.src"
             :poster="block.poster"
             controls
@@ -158,7 +184,10 @@
         </figure>
       </template>
 
-      <section class="column stack">
+      <section
+        v-if="work.stack.length"
+        class="column stack"
+      >
         <h2 class="text-funnel">
           Built with
         </h2>
@@ -403,6 +432,33 @@ h2 {
     margin-top: 0.75rem;
     font-size: 0.875rem;
     opacity: 0.6;
+  }
+}
+
+// A phone video: as tall as the screen allows, centred.
+.video.portrait {
+  video {
+    width: auto;
+    max-width: 100%;
+    max-height: 85vh;
+    margin: 0 auto;
+  }
+
+  figcaption {
+    text-align: center;
+  }
+}
+
+.cover-video {
+  margin: 0;
+
+  video {
+    display: block;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+    border-radius: 10px;
+    background: #000;
   }
 }
 

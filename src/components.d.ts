@@ -17,7 +17,6 @@ declare module 'vue' {
     Logo: typeof import('./components/Logo.vue')['default']
     OrbBackground: typeof import('./components/OrbBackground.vue')['default']
     OverlayMenu: typeof import('./components/OverlayMenu.vue')['default']
-    PageTitle: typeof import('./components/PageTitle.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
     WorkList: typeof import('./components/WorkList.vue')['default']

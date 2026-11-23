@@ -31,8 +31,18 @@ export type WorkBlock =
   | { type: "points"; heading?: string; items: { title: string; body: string }[] }
   /** A side story, set apart from the main text. */
   | { type: "aside"; label: string; body: string }
-  /** A video, played inline. */
-  | { type: "video"; src: string; poster?: string; caption?: string };
+  /**
+   * A video, played inline. `loop` plays it muted on repeat, like a GIF,
+   * without controls. `portrait` keeps a phone video from filling the page.
+   */
+  | {
+      type: "video";
+      src: string;
+      poster?: string;
+      caption?: string;
+      loop?: boolean;
+      portrait?: boolean;
+    };
 
 export interface WorkModel {
   slug: string;
@@ -50,6 +60,8 @@ export interface WorkModel {
   hrefLabel?: string;
   /** Image at the top of the page. */
   cover: Shot;
+  /** A muted loop shown at the top of the page instead of the cover image. */
+  coverVideo?: { src: string; poster: string };
   /** Smaller versions of the cover for the overview card, as a srcset. */
   thumb: string;
   blocks: WorkBlock[];
