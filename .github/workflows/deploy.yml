@@ -32,6 +32,10 @@ jobs:
       - name: Build project
         run: bun run build
 
+      # Unknown paths serve the app, so routes like /work/lasers load on refresh.
+      - name: Add SPA fallback
+        run: cp dist/index.html dist/404.html
+
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
         with:

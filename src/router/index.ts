@@ -1,11 +1,16 @@
-import { createRouter, createWebHashHistory } from "vue-router";
+import { createRouter, createWebHistory } from "vue-router";
 import { handleHotUpdate, routes } from "vue-router/auto-routes";
 
 import { useWorkStore } from "@/stores/work";
 import { atMost, preloadFonts, preloadImage } from "@/utils/preload.util";
 
+// Links from when the site used hash routing (/#/work/lasers) still work.
+if (location.hash.startsWith("#/")) {
+  history.replaceState(null, "", location.hash.slice(1));
+}
+
 const router = createRouter({
-  history: createWebHashHistory(import.meta.env.BASE_URL),
+  history: createWebHistory(import.meta.env.BASE_URL),
   routes,
 });
 

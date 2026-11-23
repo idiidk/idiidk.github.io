@@ -179,7 +179,10 @@
             </p>
           </div>
 
-          <figure class="media">
+          <figure
+            class="media"
+            :style="block.media.poster && ratio(block.media.poster)"
+          >
             <img
               v-if="block.media.image"
               v-fade-in
@@ -194,7 +197,6 @@
               v-else
               :src="block.media.video"
               :poster="block.media.poster?.src"
-              :style="block.media.poster && ratio(block.media.poster)"
               controls
               preload="none"
               playsinline
@@ -561,8 +563,10 @@ h2 {
       opacity: 0.6;
     }
 
+    // Match the video's width, so the caption starts at its left edge.
     &:has(video) figcaption {
-      text-align: center;
+      width: min(100%, calc(70vh * var(--ratio, 0.5625)));
+      margin-inline: auto;
     }
   }
 }

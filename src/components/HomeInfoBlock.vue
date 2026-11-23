@@ -12,7 +12,7 @@
     <p>
       <a
         href="#"
-        @click="openRandomSocial"
+        @click.prevent="openRandomSocial"
       >@idiidk</a> on everything
     </p>
   </div>
