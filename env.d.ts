@@ -6,7 +6,8 @@ declare module "*?as=metadata" {
   export default picture;
 }
 
-declare module "*&format=webp" {
-  const src: string;
-  export default src;
+// A srcset string with several widths, e.g. "a.webp 720w, b.webp 1440w".
+declare module "*&as=srcset" {
+  const srcset: string;
+  export default srcset;
 }

@@ -50,7 +50,7 @@ export interface WorkModel {
   hrefLabel?: string;
   /** Image at the top of the page. */
   cover: Shot;
-  /** Small version of the cover for the overview card. */
+  /** Smaller versions of the cover for the overview card, as a srcset. */
   thumb: string;
   blocks: WorkBlock[];
 }

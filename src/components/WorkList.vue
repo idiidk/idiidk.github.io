@@ -11,7 +11,9 @@
       >
         <div class="image">
           <img
-            :src="item.thumb"
+            :src="item.cover.image.src"
+            :srcset="item.thumb"
+            sizes="(min-width: 1100px) 340px, (min-width: 700px) calc(50vw - 64px), calc(100vw - 64px)"
             :alt="item.title"
             width="720"
             height="450"
@@ -119,6 +121,7 @@ onMounted(async () => {
     img {
       display: block;
       width: 100%;
+      height: auto;
       aspect-ratio: 16 / 10;
       object-fit: cover;
       object-position: top center;

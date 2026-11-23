@@ -36,12 +36,12 @@ import b302nlWork from "@/assets/work/b302.nl/work.webp?as=metadata";
 import b302nlBuro from "@/assets/work/b302.nl/buro.webp?as=metadata";
 
 // Small versions of the covers for the overview cards, made at build time.
-import platendoosAutocueThumb from "@/assets/work/platendoos/autocue.webp?w=720&format=webp";
-import maatschappaiToolsThumb from "@/assets/work/maatschapp.ai/tools-dark.webp?w=720&format=webp";
-import podwalkappnlRouteThumb from "@/assets/work/podwalkapp.nl/route.webp?w=720&format=webp";
-import vooreenprikkieconlPlanThumb from "@/assets/work/vooreenprikkie.co.nl/plan.webp?w=720&format=webp";
-import justpreparenlHomeThumb from "@/assets/work/justprepare.nl/home.webp?w=720&format=webp";
-import b302nlHomeThumb from "@/assets/work/b302.nl/home.webp?w=720&format=webp";
+import platendoosAutocueThumb from "@/assets/work/platendoos/autocue.webp?w=720;1440&format=webp&as=srcset";
+import maatschappaiToolsThumb from "@/assets/work/maatschapp.ai/tools-dark.webp?w=720;1440&format=webp&as=srcset";
+import podwalkappnlRouteThumb from "@/assets/work/podwalkapp.nl/route.webp?w=720;1440&format=webp&as=srcset";
+import vooreenprikkieconlPlanThumb from "@/assets/work/vooreenprikkie.co.nl/plan.webp?w=720;1440&format=webp&as=srcset";
+import justpreparenlHomeThumb from "@/assets/work/justprepare.nl/home.webp?w=720;1440&format=webp&as=srcset";
+import b302nlHomeThumb from "@/assets/work/b302.nl/home.webp?w=720;1440&format=webp&as=srcset";
 
 export const useWorkStore = defineStore("work", {
   state: () => ({
