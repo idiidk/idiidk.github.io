@@ -7,12 +7,18 @@
       class="menu"
     />
 
-    <RouterView v-slot="{ Component }">
+    <!-- Keyed by path, so going from one project to the next fades too,
+         instead of swapping the content in place. -->
+    <RouterView v-slot="{ Component, route }">
       <Transition
         name="fade"
         mode="out-in"
+        appear
       >
-        <component :is="Component" />
+        <component
+          :is="Component"
+          :key="route.path"
+        />
       </Transition>
     </RouterView>
   </main>
@@ -25,6 +31,12 @@ const appStore = useAppStore();
 </script>
 
 <style lang="scss" scoped>
+// Keep the pages' top margin inside <main>. Otherwise it collapses through
+// to <body>, which then moves down when the first page appears.
+main {
+  display: flow-root;
+}
+
 .menu {
   z-index: 8;
 }

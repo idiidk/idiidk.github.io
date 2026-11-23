@@ -31,8 +31,11 @@ export type WorkBlock =
   | { type: "points"; heading?: string; items: { title: string; body: string }[] }
   /** A side story, set apart from the main text. */
   | { type: "aside"; label: string; body: string }
-  /** A video, played inline. */
-  | { type: "video"; src: string; poster?: string; caption?: string }
+  /**
+   * A video, played inline. The poster also gives the video its size, so the
+   * page doesn't jump while it loads.
+   */
+  | { type: "video"; src: string; poster: Picture; caption?: string }
   /**
    * Text with a photo or video next to it. `flip` puts the media on the left.
    * The media goes below the text on small screens.
@@ -51,7 +54,7 @@ export type WorkBlock =
       type: "gigs";
       heading?: string;
       video?: string;
-      poster?: string;
+      poster?: Picture;
       items: Gig[];
     };
 
@@ -59,7 +62,8 @@ export type WorkBlock =
 export interface SplitMedia {
   image?: Picture;
   video?: string;
-  poster?: string;
+  /** Needed with a video: its size keeps the page from jumping. */
+  poster?: Picture;
   caption?: string;
 }
 

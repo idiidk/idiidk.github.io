@@ -46,10 +46,10 @@ import b302nlHomeThumb from "@/assets/work/b302.nl/home.webp?w=720;1440&format=w
 import lasersDesk from "@/assets/work/lasers/desk.webp?as=metadata";
 import lasersThumb from "@/assets/work/lasers/preview.webp?w=720;1440&format=webp&as=srcset";
 import lasersVibes from "@/assets/work/lasers/vibes.mp4";
-import lasersVibesPoster from "@/assets/work/lasers/vibes-poster.webp";
+import lasersVibesPoster from "@/assets/work/lasers/vibes-poster.webp?as=metadata";
 import lasersPreview from "@/assets/work/lasers/preview.webp?as=metadata";
 import lasersLive from "@/assets/work/lasers/live.mp4";
-import lasersLivePoster from "@/assets/work/lasers/live-poster.webp";
+import lasersLivePoster from "@/assets/work/lasers/live-poster.webp?as=metadata";
 
 export const useWorkStore = defineStore("work", {
   state: () => ({
@@ -94,7 +94,7 @@ export const useWorkStore = defineStore("work", {
           {
             type: "video",
             src: "https://media.idiidk.nl/platendoos-trailer.mp4",
-            poster: platendoosQuickdeck.src,
+            poster: platendoosQuickdeck,
             caption: "The trailer, recorded in rekordbox. With sound.",
           },
           {

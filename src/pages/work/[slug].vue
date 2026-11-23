@@ -147,7 +147,8 @@
         >
           <video
             :src="block.src"
-            :poster="block.poster"
+            :poster="block.poster.src"
+            :style="ratio(block.poster)"
             controls
             preload="none"
             playsinline
@@ -181,6 +182,7 @@
           <figure class="media">
             <img
               v-if="block.media.image"
+              v-fade-in
               :src="block.media.image.src"
               :width="block.media.image.width"
               :height="block.media.image.height"
@@ -191,7 +193,8 @@
             <video
               v-else
               :src="block.media.video"
-              :poster="block.media.poster"
+              :poster="block.media.poster?.src"
+              :style="block.media.poster && ratio(block.media.poster)"
               controls
               preload="none"
               playsinline
@@ -210,7 +213,7 @@
             v-if="block.video"
             class="backdrop"
             :src="block.video"
-            :poster="block.poster"
+            :poster="block.poster?.src"
             autoplay
             muted
             loop
@@ -276,7 +279,15 @@
 </template>
 
 <script setup lang="ts">
+import type { Picture } from "@/models/work.model";
 import { useWorkStore } from "@/stores/work";
+import { vFadeIn } from "@/utils/fade-in.directive";
+
+/**
+ * A video has no size until its poster loads. Taking the shape from the
+ * poster keeps the space reserved, so nothing below it jumps.
+ */
+const ratio = (poster: Picture) => ({ "--ratio": poster.width / poster.height });
 
 const workStore = useWorkStore();
 
@@ -488,6 +499,8 @@ h2 {
   video {
     display: block;
     width: 100%;
+    height: auto;
+    aspect-ratio: var(--ratio, 16 / 9);
     border-radius: 10px;
     background: #000;
   }
@@ -533,11 +546,12 @@ h2 {
       box-shadow: 0 24px 48px -16px rgba(0, 0, 0, 0.6);
     }
 
-    // Size a phone video by its own shape, so there are no black bars.
+    // Size a phone video by its own shape, so there are no black bars: as
+    // wide as fits, but never taller than 70% of the screen.
     video {
-      width: auto;
-      max-width: 100%;
-      max-height: 70vh;
+      width: min(100%, calc(70vh * var(--ratio, 0.5625)));
+      max-height: none;
+      aspect-ratio: var(--ratio, 9 / 16);
       margin: 0 auto;
     }
 

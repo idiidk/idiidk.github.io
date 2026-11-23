@@ -1,9 +1,33 @@
 import { createRouter, createWebHashHistory } from "vue-router";
 import { handleHotUpdate, routes } from "vue-router/auto-routes";
 
+import { useWorkStore } from "@/stores/work";
+import { atMost, preloadFonts, preloadImage } from "@/utils/preload.util";
+
 const router = createRouter({
   history: createWebHashHistory(import.meta.env.BASE_URL),
   routes,
+});
+
+// Before a page opens, load what's at the top of it: the fonts and, on a
+// project page, the cover. The old page stays up meanwhile, and the new one
+// fades in complete instead of building itself up in front of you. A slow
+// connection waits at most 1.5 seconds; the rest fades in as it arrives.
+router.beforeResolve(async (to) => {
+  const waits = [preloadFonts()];
+
+  if (to.name === "/work/[slug]") {
+    const work = useWorkStore().work.find((w) => w.slug === to.params.slug);
+    if (work) {
+      waits.push(preloadImage(work.cover.image.src));
+      const first = work.blocks[0];
+      if (first?.type === "split" && first.media.image) {
+        waits.push(preloadImage(first.media.image.src));
+      }
+    }
+  }
+
+  await atMost(Promise.all(waits), 1500);
 });
 
 if (import.meta.hot) {

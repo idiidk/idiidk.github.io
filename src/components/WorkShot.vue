@@ -3,7 +3,10 @@
     class="shot"
     :class="`shot--${frame}`"
   >
-    <div class="frame">
+    <div
+      class="frame"
+      :style="{ '--width': `${props.image.width}px` }"
+    >
       <div
         v-if="frame === 'browser'"
         class="bar"
@@ -12,6 +15,7 @@
         <span /><span /><span />
       </div>
       <img
+        v-fade-in
         :src="props.image.src"
         :width="props.image.width"
         :height="props.image.height"
@@ -29,6 +33,7 @@
 
 <script setup lang="ts">
 import type { Picture, ShotFrame } from "@/models/work.model";
+import { vFadeIn } from "@/utils/fade-in.directive";
 
 const props = defineProps<{
   image: Picture;
@@ -67,16 +72,12 @@ const frame = computed(() => props.frame ?? "browser");
     0 24px 48px -16px rgba(0, 0, 0, 0.6);
 }
 
+// Never wider than the image itself. The width comes from the image's size
+// rather than the loaded file, so the space is right before it arrives.
 .shot--bare .frame {
   border-radius: 10px;
   overflow: hidden;
-  width: fit-content;
-  max-width: 100%;
-
-  img {
-    width: auto;
-    max-width: 100%;
-  }
+  width: min(100%, var(--width));
 }
 
 .shot--browser .bar {

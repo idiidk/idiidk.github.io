@@ -6,4 +6,4 @@ import router from "./router";
 
 import "./styles/main.scss";
 
-createApp(App).use(router).use(createPinia()).mount("#app");
+createApp(App).use(createPinia()).use(router).mount("#app");
