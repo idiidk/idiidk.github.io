@@ -31,18 +31,47 @@ export type WorkBlock =
   | { type: "points"; heading?: string; items: { title: string; body: string }[] }
   /** A side story, set apart from the main text. */
   | { type: "aside"; label: string; body: string }
+  /** A video, played inline. */
+  | { type: "video"; src: string; poster?: string; caption?: string }
   /**
-   * A video, played inline. `loop` plays it muted on repeat, like a GIF,
-   * without controls. `portrait` keeps a phone video from filling the page.
+   * Text with a photo or video next to it. `flip` puts the media on the left.
+   * The media goes below the text on small screens.
    */
   | {
-      type: "video";
-      src: string;
+      type: "split";
+      heading?: string;
+      body: string[];
+      media: SplitMedia;
+      flip?: boolean;
+    }
+  /**
+   * A list of dated events, like a flyer. `video` loops behind it, darkened.
+   */
+  | {
+      type: "gigs";
+      heading?: string;
+      video?: string;
       poster?: string;
-      caption?: string;
-      loop?: boolean;
-      portrait?: boolean;
+      items: Gig[];
     };
+
+/** An image, or a video with a poster frame, for a `split` block. */
+export interface SplitMedia {
+  image?: Picture;
+  video?: string;
+  poster?: string;
+  caption?: string;
+}
+
+export interface Gig {
+  /** Shown big, e.g. "19". */
+  day: string;
+  /** Shown small under the day, e.g. "Sep 2026". */
+  month: string;
+  title: string;
+  place: string;
+  body: string;
+}
 
 export interface WorkModel {
   slug: string;
@@ -60,8 +89,6 @@ export interface WorkModel {
   hrefLabel?: string;
   /** Image at the top of the page. */
   cover: Shot;
-  /** A muted loop shown at the top of the page instead of the cover image. */
-  coverVideo?: { src: string; poster: string };
   /** Smaller versions of the cover for the overview card, as a srcset. */
   thumb: string;
   blocks: WorkBlock[];

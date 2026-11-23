@@ -36,8 +36,8 @@ bun run lint     # eslint, with fixes
    ```ts
    import fooHome from "@/assets/work/foo/home.webp?as=metadata";
    ```
-3. Import the cover a second time with `?w=720&format=webp`. That's the small version for the card on the overview.
-4. Add an entry to the `work` list, and build the page out of blocks (`text`, `shot`, `shots`, `numbers`, `points`, `aside`, `video`). `work.model.ts` explains each one.
+3. Import the cover a second time with `?w=720;1440&format=webp&as=srcset`. Those are the small versions for the card on the overview.
+4. Add an entry to the `work` list, and build the page out of blocks (`text`, `shot`, `shots`, `numbers`, `points`, `aside`, `video`, `split`, `gigs`). `work.model.ts` explains each one.
 
 The order of the list is the order on the site.
 

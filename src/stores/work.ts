@@ -44,9 +44,10 @@ import justpreparenlHomeThumb from "@/assets/work/justprepare.nl/home.webp?w=720
 import b302nlHomeThumb from "@/assets/work/b302.nl/home.webp?w=720;1440&format=webp&as=srcset";
 
 import lasersDesk from "@/assets/work/lasers/desk.webp?as=metadata";
-import lasersThumb from "@/assets/work/lasers/vibes-poster.webp?w=720;768&format=webp&as=srcset";
+import lasersThumb from "@/assets/work/lasers/preview.webp?w=720;1440&format=webp&as=srcset";
 import lasersVibes from "@/assets/work/lasers/vibes.mp4";
 import lasersVibesPoster from "@/assets/work/lasers/vibes-poster.webp";
+import lasersPreview from "@/assets/work/lasers/preview.webp?as=metadata";
 import lasersLive from "@/assets/work/lasers/live.mp4";
 import lasersLivePoster from "@/assets/work/lasers/live-poster.webp";
 
@@ -181,54 +182,73 @@ export const useWorkStore = defineStore("work", {
         slug: "lasers",
         title: "Lasers",
         tagline: "Laser shows at drum and bass nights, as a freelancer for Holy Beams.",
-        accent: "#9d5cff",
+        accent: "#8ea8ff",
         year: "2026",
         role: "Freelance laser operator",
         client: "Holy Beams",
-        stack: [],
+        stack: ["Liberation Laser"],
         href: "https://holybeams.com/",
         hrefLabel: "holybeams.com",
         thumb: lasersThumb,
-        cover: { image: lasersDesk, frame: "bare" },
-        coverVideo: { src: lasersVibes, poster: lasersVibesPoster },
+        cover: {
+          image: lasersPreview,
+          frame: "bare",
+          caption: "NCT b2b Mind Vortex at Moonshine 10YRS, Luxor Live.",
+        },
         blocks: [
           {
-            type: "text",
+            type: "split",
             body: [
               "Not everything I do happens on a screen. Every now and then Holy Beams, a laser company from Arnhem, books me as a freelance operator, and I spend the night behind the desk playing lasers along with the music.",
-              "It's live work. You listen for what's coming, watch the DJ, and hit the right look the moment the drop lands. When it works, the whole room feels it.",
+              "Not that long ago I was one of the people on that dance floor, at these same nights, looking up at the beams. Now I'm part of the crew that makes them happen, and I'm really proud of that.",
             ],
+            media: {
+              image: lasersDesk,
+              caption: "Operating on stage at Luxor Live, Arnhem.",
+            },
           },
           {
-            type: "shot",
-            image: lasersDesk,
-            frame: "bare",
-            caption: "Behind the desk at Luxor Live, Arnhem.",
+            type: "split",
+            heading: "How a night works",
+            flip: true,
+            body: [
+              "The shows run on Liberation Laser, from a laptop and a controller at front of house. You build your looks and effects before the doors open: beams, fans, tunnels, colours, all ready to fire from a pad.",
+              "After that it's live: you listen for what's coming, watch the DJ, and hit the right look the moment the drop lands. When it works, the whole room feels it.",
+            ],
+            media: {
+              video: lasersLive,
+              poster: lasersLivePoster,
+              caption: "Running the lasers live. With sound.",
+            },
           },
           {
-            type: "points",
+            type: "gigs",
             heading: "Recent nights",
+            video: lasersVibes,
+            poster: lasersVibesPoster,
             items: [
               {
+                day: "19",
+                month: "Sep 2026",
                 title: "Moonshine 10YRS",
-                body: "Luxor Live, Arnhem · 19 September 2026. Ten years of Moonshine, celebrated with a daytime rave. I operated the lasers, and it was my latest gig.",
+                place: "Luxor Live, Arnhem",
+                body: "Ten years of Moonshine, celebrated with a daytime rave in the main room, from three in the afternoon until eleven at night. Primate, NCT b2b Mind Vortex and Don Darkoe b2b Kritikal were among the names on the line-up. I operated the lasers, and it's my latest gig.",
               },
               {
+                day: "05",
+                month: "Sep 2026",
                 title: "Fiber Open Air",
-                body: "Openluchttheater de Goffert, Nijmegen · 5 September 2026. Part of the crew on the laser tunnel.",
+                place: "Openluchttheater de Goffert, Nijmegen",
+                body: "A full day of drum and bass in an open-air theatre, with Delta Heavy and Subsonic among others. I was part of the crew on the laser tunnel.",
               },
               {
+                day: "20",
+                month: "Mar 2026",
                 title: "Moonshine ft. Arcando + Atmos b2b Formula",
-                body: "Luxor Live, Arnhem · 20 March 2026. I operated the lasers here too.",
+                place: "Luxor Live, Arnhem",
+                body: "An all-nighter, from midnight until six, with Arcando and Atmos b2b Formula. I operated the lasers here too.",
               },
             ],
-          },
-          {
-            type: "video",
-            src: lasersLive,
-            poster: lasersLivePoster,
-            portrait: true,
-            caption: "Running the lasers live. With sound.",
           },
         ],
       },

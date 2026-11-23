@@ -46,22 +46,7 @@
         </dl>
       </header>
 
-      <figure
-        v-if="work.coverVideo"
-        class="wide cover cover-video"
-      >
-        <video
-          :src="work.coverVideo.src"
-          :poster="work.coverVideo.poster"
-          autoplay
-          muted
-          loop
-          playsinline
-          aria-hidden="true"
-        />
-      </figure>
       <WorkShot
-        v-else
         class="wide cover"
         v-bind="work.cover"
         eager
@@ -159,19 +144,8 @@
         <figure
           v-else-if="block.type === 'video'"
           class="wide video"
-          :class="{ portrait: block.portrait }"
         >
           <video
-            v-if="block.loop"
-            :src="block.src"
-            :poster="block.poster"
-            autoplay
-            muted
-            loop
-            playsinline
-          />
-          <video
-            v-else
             :src="block.src"
             :poster="block.poster"
             controls
@@ -182,6 +156,96 @@
             {{ block.caption }}
           </figcaption>
         </figure>
+
+        <section
+          v-else-if="block.type === 'split'"
+          class="wide split"
+          :class="{ flip: block.flip }"
+        >
+          <div class="text">
+            <h2
+              v-if="block.heading"
+              class="text-funnel"
+            >
+              {{ block.heading }}
+            </h2>
+            <p
+              v-for="(p, j) in block.body"
+              :key="j"
+              :class="{ lede: i === 0 && j === 0 }"
+            >
+              {{ p }}
+            </p>
+          </div>
+
+          <figure class="media">
+            <img
+              v-if="block.media.image"
+              :src="block.media.image.src"
+              :width="block.media.image.width"
+              :height="block.media.image.height"
+              :alt="block.media.caption ?? ''"
+              loading="lazy"
+              decoding="async"
+            >
+            <video
+              v-else
+              :src="block.media.video"
+              :poster="block.media.poster"
+              controls
+              preload="none"
+              playsinline
+            />
+            <figcaption v-if="block.media.caption">
+              {{ block.media.caption }}
+            </figcaption>
+          </figure>
+        </section>
+
+        <section
+          v-else-if="block.type === 'gigs'"
+          class="wide gigs"
+        >
+          <video
+            v-if="block.video"
+            class="backdrop"
+            :src="block.video"
+            :poster="block.poster"
+            autoplay
+            muted
+            loop
+            playsinline
+            aria-hidden="true"
+          />
+
+          <div class="inner">
+            <h2
+              v-if="block.heading"
+              class="text-funnel"
+            >
+              {{ block.heading }}
+            </h2>
+
+            <ol>
+              <li
+                v-for="(gig, j) in block.items"
+                :key="j"
+              >
+                <div class="date text-funnel">
+                  <span class="day">{{ gig.day }}</span>
+                  <span class="month">{{ gig.month }}</span>
+                </div>
+                <div class="info">
+                  <h3 class="text-funnel">
+                    {{ gig.title }}
+                  </h3>
+                  <span class="place">{{ gig.place }}</span>
+                  <p>{{ gig.body }}</p>
+                </div>
+              </li>
+            </ol>
+          </div>
+        </section>
       </template>
 
       <section
@@ -435,30 +499,167 @@ h2 {
   }
 }
 
-// A phone video: as tall as the screen allows, centred.
-.video.portrait {
-  video {
-    width: auto;
-    max-width: 100%;
-    max-height: 85vh;
-    margin: 0 auto;
+
+// Text beside a photo or video. Stacks on small screens.
+.split {
+  display: grid;
+  gap: 2.5rem;
+  align-items: center;
+
+  @media (min-width: 860px) {
+    grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
+    gap: 4rem;
+
+    &.flip .media {
+      order: -1;
+    }
   }
 
-  figcaption {
-    text-align: center;
+  .media {
+    margin: 0;
+    justify-self: center;
+    max-width: 30rem;
+    width: 100%;
+
+    img,
+    video {
+      display: block;
+      width: 100%;
+      height: auto;
+      max-height: 75vh;
+      object-fit: contain;
+      border-radius: 10px;
+      background: #000;
+      box-shadow: 0 24px 48px -16px rgba(0, 0, 0, 0.6);
+    }
+
+    // Size a phone video by its own shape, so there are no black bars.
+    video {
+      width: auto;
+      max-width: 100%;
+      max-height: 70vh;
+      margin: 0 auto;
+    }
+
+    figcaption {
+      margin-top: 0.75rem;
+      font-size: 0.875rem;
+      opacity: 0.6;
+    }
+
+    &:has(video) figcaption {
+      text-align: center;
+    }
   }
 }
 
-.cover-video {
-  margin: 0;
+// Dated nights over a darkened looping video, like a flyer.
+.gigs {
+  position: relative;
+  overflow: hidden;
+  border-radius: 16px;
+  padding: clamp(1.5rem, 5vw, 3.5rem);
+  background: #0b0b14;
+  box-shadow: inset 0 0 0 1px
+    color-mix(in srgb, var(--accent) 25%, transparent);
 
-  video {
-    display: block;
+  .backdrop {
+    position: absolute;
+    inset: 0;
     width: 100%;
-    aspect-ratio: 16 / 9;
+    height: 100%;
     object-fit: cover;
-    border-radius: 10px;
-    background: #000;
+  }
+
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background: linear-gradient(
+      100deg,
+      rgba(8, 8, 18, 0.94) 0%,
+      rgba(8, 8, 18, 0.84) 55%,
+      rgba(8, 8, 18, 0.6) 100%
+    );
+  }
+
+  .inner {
+    position: relative;
+    z-index: 2;
+  }
+
+  h2 {
+    margin-bottom: 1.5rem;
+  }
+
+  ol {
+    list-style: none;
+    padding: 0;
+  }
+
+  li {
+    display: grid;
+    grid-template-columns: 6.5rem minmax(0, 1fr);
+    gap: 2rem;
+    padding: 1.75rem 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.14);
+
+    // On a phone the date sits above the gig, in one line.
+    @media (max-width: 600px) {
+      grid-template-columns: minmax(0, 1fr);
+      gap: 0.75rem;
+    }
+  }
+
+  .date {
+    display: flex;
+    flex-direction: column;
+    line-height: 1;
+
+    @media (max-width: 600px) {
+      flex-direction: row;
+      align-items: baseline;
+      gap: 0.6rem;
+    }
+  }
+
+  .day {
+    font-size: clamp(2.5rem, 6vw, 3.75rem);
+    font-weight: 600;
+    color: var(--accent);
+  }
+
+  .month {
+    margin-top: 0.4rem;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    opacity: 0.7;
+
+    @media (max-width: 600px) {
+      margin-top: 0;
+    }
+  }
+
+  h3 {
+    font-size: clamp(1.3rem, 2.5vw, 1.6rem);
+    font-weight: 600;
+    line-height: 1.2;
+  }
+
+  .place {
+    display: block;
+    margin-top: 0.3rem;
+    font-size: 0.9rem;
+    opacity: 0.65;
+  }
+
+  p {
+    margin-top: 0.75rem;
+    max-width: 42rem;
+    line-height: 1.7;
+    opacity: 0.88;
   }
 }
 
