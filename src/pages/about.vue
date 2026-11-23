@@ -12,7 +12,10 @@
           </p>
         </div>
 
-        <div class="photos">
+        <div
+          class="photos"
+          :class="{ ready }"
+        >
           <img
             :src="vincent1"
             alt="Vincent Brouwer"
@@ -126,6 +129,21 @@
 import vincent1 from "@/assets/about/vincent-1-min.webp";
 import vincent2 from "@/assets/about/vincent-2-min.webp";
 
+import { useAppStore } from "@/stores/app";
+
+const appStore = useAppStore();
+
+// Like the cards on the work page: wait until the menu has closed, so the
+// photos drop in where you can see them instead of behind the menu.
+const ready = ref(false);
+
+onMounted(async () => {
+  if (appStore.menuPromise) {
+    await appStore.menuPromise;
+  }
+  ready.value = true;
+});
+
 const links = [
   { label: "GitHub", href: "https://github.com/idiidk" },
   { label: "Instagram", href: "https://www.instagram.com/idiidk/" },
@@ -206,28 +224,41 @@ p {
     height: auto;
     border-radius: 6px;
     box-shadow: 0 24px 48px -16px rgba(0, 0, 0, 0.7);
+    opacity: 0;
     transition:
       rotate 0.3s ease,
       scale 0.3s ease;
     // "backwards" only holds the first frame during the delay, so the
     // hover below still works once the animation is done.
-    animation: 0.7s cubic-bezier(0.2, 0.8, 0.3, 1.25) backwards;
+    animation-duration: 0.7s;
+    animation-timing-function: cubic-bezier(0.2, 0.8, 0.3, 1.25);
+    animation-fill-mode: backwards;
+  }
+
+  &.ready img {
+    opacity: 1;
   }
 
   img:first-child {
     top: 0;
     left: 0;
     rotate: -4deg;
-    animation-name: drop-left;
-    animation-delay: 0.2s;
+    animation-delay: 0.1s;
   }
 
   img:last-child {
     right: 0;
     bottom: 0;
     rotate: 3deg;
+    animation-delay: 0.28s;
+  }
+
+  &.ready img:first-child {
+    animation-name: drop-left;
+  }
+
+  &.ready img:last-child {
     animation-name: drop-right;
-    animation-delay: 0.38s;
   }
 
   img:hover {
@@ -242,7 +273,8 @@ p {
 
   @media (prefers-reduced-motion: reduce) {
     img {
-      animation: none;
+      opacity: 1;
+      animation: none !important;
     }
   }
 }
