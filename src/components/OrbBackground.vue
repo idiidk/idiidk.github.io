@@ -1,7 +1,7 @@
 <template>
   <div class="wrapper">
     <div class="orbs">
-      <canvas ref="backgroundCanvas"></canvas>
+      <canvas ref="backgroundCanvas" />
     </div>
   </div>
 </template>

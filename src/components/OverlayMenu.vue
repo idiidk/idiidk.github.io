@@ -1,12 +1,28 @@
 <template>
-  <div class="menu" v-if="showing">
-    <div @click="model = false" class="overlay" ref="overlayRef"></div>
+  <div
+    v-if="showing"
+    class="menu"
+  >
+    <div
+      ref="overlayRef"
+      class="overlay"
+      @click="model = false"
+    />
 
-    <div class="list" ref="listRef">
-      <h1 class="text-funnel" @click.capture.prevent="navigateToRoute('/')">
+    <div
+      ref="listRef"
+      class="list"
+    >
+      <h1
+        class="text-funnel"
+        @click.capture.prevent="navigateToRoute('/')"
+      >
         Home
       </h1>
-      <h1 class="text-funnel" @click.capture.prevent="navigateToRoute('/work')">
+      <h1
+        class="text-funnel"
+        @click.capture.prevent="navigateToRoute('/work')"
+      >
         My Work
       </h1>
       <h1

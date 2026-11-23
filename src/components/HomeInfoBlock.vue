@@ -1,11 +1,20 @@
 <template>
-  <div ref="wrapper" class="wrapper" :class="{ mobile: isMobile }">
+  <div
+    ref="wrapper"
+    class="wrapper"
+    :class="{ mobile: isMobile }"
+  >
     <b class="text-funnel name">Vincent Brouwer</b>
     <p>
       founder of <a href="https://codebrouwers.nl/">De Codebrouwers</a>
     </p>
     <p>vincent@codebrouwers.nl</p>
-    <p><a href="#" @click="openRandomSocial">@idiidk</a> on everything</p>
+    <p>
+      <a
+        href="#"
+        @click="openRandomSocial"
+      >@idiidk</a> on everything
+    </p>
   </div>
 </template>
 

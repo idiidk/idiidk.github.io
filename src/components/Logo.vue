@@ -1,10 +1,10 @@
 <template>
   <h1
+    class="logo text-funnel"
     @click="
       store.menu = false;
       $router.push('/');
     "
-    class="logo text-funnel"
   >
     idiidk
   </h1>

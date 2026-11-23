@@ -1,7 +1,10 @@
 <template>
   <div>
-    <OrbBackground :scattered="!appStore.menu"> </OrbBackground>
-    <HomeInfoBlock class="info" :style="{ mobile: isMobile }"></HomeInfoBlock>
+    <OrbBackground :scattered="!appStore.menu" />
+    <HomeInfoBlock
+      class="info"
+      :style="{ mobile: isMobile }"
+    />
   </div>
 </template>
 

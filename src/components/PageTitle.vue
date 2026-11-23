@@ -1,5 +1,7 @@
 <template>
-  <h1 class="title text-funnel">{{ props.title }}</h1>
+  <h1 class="title text-funnel">
+    {{ props.title }}
+  </h1>
 </template>
 
 <script setup lang="ts">

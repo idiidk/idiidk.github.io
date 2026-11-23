@@ -1,3 +1,12 @@
 /// <reference types="vite/client" />
-/// <reference types="unplugin-vue-router/client" />
-/// <reference types="vite-plugin-vue-layouts/client" />
+
+// Images imported through vite-imagetools.
+declare module "*?as=metadata" {
+  const picture: import("@/models/work.model").Picture;
+  export default picture;
+}
+
+declare module "*&format=webp" {
+  const src: string;
+  export default src;
+}

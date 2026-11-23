@@ -1,35 +1,45 @@
 <template>
-  <v-container class="wrapper">
-    <masonry-wall :items="props.work" :ssr-columns="1" :gap="32">
-      <template #default="{ item, index }">
-        <div class="card-wrapper">
-          <v-card
-            :color="appStore.baseColors[index]"
-            :class="{ 'fade-in': fadeIn[index] }"
-            @click="$router.push(`/work/${item.slug}`)"
-            variant="tonal"
-            class="card"
+  <div class="container wrapper">
+    <div class="grid">
+      <RouterLink
+        v-for="(item, index) in props.work"
+        :key="item.slug"
+        :to="`/work/${item.slug}`"
+        class="card"
+        :class="{ 'fade-in': fadeIn[index] }"
+        :style="{ '--accent': item.accent }"
+      >
+        <div class="image">
+          <img
+            :src="item.thumb"
+            :alt="item.title"
+            width="720"
+            height="450"
+            :loading="index < 3 ? 'eager' : 'lazy'"
+            decoding="async"
           >
-            <div class="image-wrapper">
-              <v-img class="image" :src="item.images[0]"></v-img>
-            </div>
-
-            <v-card-title class="title text-funnel">{{
-              item.title
-            }}</v-card-title>
-            <v-card-text class="description">{{
-              item.overview.slice(0, 128) + "..."
-            }}</v-card-text>
-          </v-card>
         </div>
-      </template>
-    </masonry-wall>
-  </v-container>
+
+        <div class="body">
+          <div class="top">
+            <h2 class="title text-funnel">
+              {{ item.title }}
+            </h2>
+            <span
+              v-if="item.year"
+              class="year"
+            >{{ item.year }}</span>
+          </div>
+          <p class="tagline">
+            {{ item.tagline }}
+          </p>
+        </div>
+      </RouterLink>
+    </div>
+  </div>
 </template>
 
 <script setup lang="ts">
-import MasonryWall from "@yeger/vue-masonry-wall";
-
 import { useAppStore } from "@/stores/app";
 import type { WorkModel } from "@/models/work.model";
 
@@ -49,7 +59,7 @@ onMounted(async () => {
   props.work.forEach((_, index) => {
     setTimeout(() => {
       fadeIn.value[index] = true;
-    }, 100 * index); // Adjust delay (100ms per item) as needed
+    }, 100 * index);
   });
 });
 </script>
@@ -58,39 +68,96 @@ onMounted(async () => {
 .wrapper {
   padding-left: 1rem !important;
   padding-right: 1rem !important;
+}
 
-  .card-wrapper {
-    transition: transform 0.1s;
+.grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  max-width: 72rem;
+  margin: 0 auto;
 
-    cursor: pointer;
+  @media (min-width: 700px) {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
 
-    &:hover,
-    &:active {
-      transform: scale(0.95) !important;
-      z-index: 1;
+  @media (min-width: 1100px) {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  opacity: 0;
+  color: white;
+  text-decoration: none;
+  border-radius: 12px;
+  overflow: hidden;
+  background: color-mix(in srgb, var(--accent) 14%, #121212);
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--accent) 30%, transparent);
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: inset 0 0 0 1px var(--accent);
+
+    .image img {
+      transform: scale(1.03);
     }
+  }
 
-    .card {
-      opacity: 0;
+  &:active {
+    transform: scale(0.98);
+  }
 
-      .title,
-      .description {
-        color: white;
-      }
+  .image {
+    padding: 1rem 1rem 0;
 
-      .image-wrapper {
-        padding: 1rem;
-
-        .image {
-          border-radius: 2px;
-        }
-      }
+    img {
+      display: block;
+      width: 100%;
+      aspect-ratio: 16 / 10;
+      object-fit: cover;
+      object-position: top center;
+      border-radius: 6px;
+      transition: transform 0.4s ease;
     }
+  }
+
+  .body {
+    padding: 1.25rem 1.25rem 1.5rem;
+  }
+
+  .top {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 1rem;
+  }
+
+  .title {
+    font-size: 1.6rem;
+    font-weight: 600;
+  }
+
+  .year {
+    flex-shrink: 0;
+    font-size: 0.85rem;
+    opacity: 0.6;
+  }
+
+  .tagline {
+    margin-top: 0.4rem;
+    opacity: 0.8;
+    line-height: 1.45;
   }
 }
 
 .fade-in {
-  animation: fadeInAnimation 0.5s forwards; /* Adjust duration */
+  animation: fadeInAnimation 0.5s forwards;
 }
 
 @keyframes fadeInAnimation {

@@ -1,21 +1,23 @@
 <template>
   <AppBarMarginContainer>
-    <v-container>
-      <PageTitle title="About me"></PageTitle>
+    <div class="container">
+      <PageTitle title="About me" />
 
-      <v-row class="mt-2 mb-8">
-        <v-col v-if="!isMobile" cols="12" sm="6" md="4">
-          <v-card>
-            <v-img :src="vincent1"></v-img>
-          </v-card>
-        </v-col>
-
-        <v-col cols="12" sm="6" md="4">
-          <v-card>
-            <v-img :src="vincent2"></v-img>
-          </v-card>
-        </v-col>
-      </v-row>
+      <div class="photos">
+        <img
+          v-if="!isMobile"
+          :src="vincent1"
+          alt="Vincent Brouwer"
+          width="350"
+          height="350"
+        >
+        <img
+          :src="vincent2"
+          alt="Vincent Brouwer holding a keyboard"
+          width="350"
+          height="350"
+        >
+      </div>
 
       <p>
         My name is Vincent Brouwer, and I build things. Based in Zutphen,
@@ -25,7 +27,7 @@
         management.
       </p>
 
-      <br />
+      <br>
 
       <p>
         This work finds its professional expression through
@@ -33,16 +35,15 @@
           href="https://codebrouwers.github.io"
           target="_blank"
           rel="noopener noreferrer"
-          >De Codebrouwers</a
-        >, my company dedicated to providing clients with thoughtful full-stack
+        >De Codebrouwers</a>, my company dedicated to providing clients with thoughtful full-stack
         development, custom software creation, and strategic digital concepts.
         We aim to be more than just implementers; we strive to be creative
         partners, building solutions that are both technically sound and
         conceptually strong.
       </p>
 
-      <br />
-      <br />
+      <br>
+      <br>
 
       <p>
         But my drive to create extends beyond the digital realm of web
@@ -52,14 +53,13 @@
           target="_blank"
           rel="noopener noreferrer"
           href="https://open.spotify.com/artist/5SIPahYMtvwQdrwvGJ4N1w"
-          >idiidk</a
-        >. The energy, complexity, and sonic possibilities within DnB fascinate
+        >idiidk</a>. The energy, complexity, and sonic possibilities within DnB fascinate
         me. It's a genre that demands both technical precision in sound design
         and a feel for rhythm and groove – a different kind of full-stack
         challenge, in a way.
       </p>
 
-      <br />
+      <br>
 
       <p>
         For me, coding and music production aren't entirely separate worlds.
@@ -69,25 +69,42 @@
         final outcome.
       </p>
 
-      <br />
+      <br>
 
       <p>
         This portfolio highlights my development projects – I invite you to
         <a href="/#/work">take a look.</a>
       </p>
-    </v-container>
+    </div>
   </AppBarMarginContainer>
 </template>
 
 <script setup lang="ts">
-import vincent1 from "@/assets/about/vincent-1-min.jpg";
-import vincent2 from "@/assets/about/vincent-2-min.jpg";
+import vincent1 from "@/assets/about/vincent-1-min.webp";
+import vincent2 from "@/assets/about/vincent-2-min.webp";
 
 import { isMobile } from "@/utils/window.util";
 </script>
 
 <style lang="scss" scoped>
-a {
-  color: white;
+.photos {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
+  margin: 20px 0 44px;
+
+  @media (min-width: 600px) {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  @media (min-width: 960px) {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  img {
+    width: 100%;
+    height: auto;
+    border-radius: 4px;
+  }
 }
 </style>

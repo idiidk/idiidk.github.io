@@ -3,7 +3,7 @@ import { defineStore } from "pinia";
 export const useAppStore = defineStore("app", {
   state: () => ({
     menu: false,
-    menuPromise: null as Promise<any> | null,
+    menuPromise: null as Promise<unknown> | null,
     barHeight: 0,
     baseColors: [
       "#f72585",

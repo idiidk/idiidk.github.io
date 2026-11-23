@@ -2,248 +2,436 @@ import { defineStore } from "pinia";
 
 import type { WorkModel } from "@/models/work.model";
 
-import b302nlHome from "@/assets/work/b302.nl/home.png";
-import b302nlWork from "@/assets/work/b302.nl/work.png";
-import b302nlBuro from "@/assets/work/b302.nl/buro.png";
+import platendoosAutocue from "@/assets/work/platendoos/autocue.webp?as=metadata";
+import platendoosAnalysis from "@/assets/work/platendoos/analysis.webp?as=metadata";
+import platendoosGenres from "@/assets/work/platendoos/genres.webp?as=metadata";
+import platendoosPatcher from "@/assets/work/platendoos/patcher-done.webp?as=metadata";
+import platendoosChip from "@/assets/work/platendoos/chip.webp?as=metadata";
+import platendoosTrackmenu from "@/assets/work/platendoos/trackmenu.webp?as=metadata";
+import platendoosFlx4 from "@/assets/work/platendoos/flx4.webp?as=metadata";
+import platendoosQuickdeck from "@/assets/work/platendoos/quickdeck.webp?as=metadata";
 
-import maatschappaiHome from "@/assets/work/maatschapp.ai/home.png";
-import maatschappaiAccount from "@/assets/work/maatschapp.ai/account.png";
-import maatschappaiTool from "@/assets/work/maatschapp.ai/tool.png";
+import maatschappaiTools from "@/assets/work/maatschapp.ai/tools-dark.webp?as=metadata";
+import maatschappaiToolsLight from "@/assets/work/maatschapp.ai/tools.webp?as=metadata";
+import maatschappaiChat from "@/assets/work/maatschapp.ai/chat-dark.webp?as=metadata";
+import maatschappaiTranscriptions from "@/assets/work/maatschapp.ai/transcriptions-dark.webp?as=metadata";
+import maatschappaiCourses from "@/assets/work/maatschapp.ai/courses-dark.webp?as=metadata";
 
-import justpreparenlHome from "@/assets/work/justprepare.nl/home.png";
-import justpreparenlWieZijnWij from "@/assets/work/justprepare.nl/wie-zijn-wij.png";
-import justpreparenlBlogsEnVerslagen from "@/assets/work/justprepare.nl/blogs-en-verslagen.png";
+import podwalkappnlHome from "@/assets/work/podwalkapp.nl/home.webp?as=metadata";
+import podwalkappnlRoute from "@/assets/work/podwalkapp.nl/route.webp?as=metadata";
+import podwalkappnlSettings from "@/assets/work/podwalkapp.nl/settings.webp?as=metadata";
 
-import podwalkappnlHome from "@/assets/work/podwalkapp.nl/home.png";
-import podwalkappnlRoute from "@/assets/work/podwalkapp.nl/route.png";
-import podwalkappnlSettings from "@/assets/work/podwalkapp.nl/settings.png";
+import vooreenprikkieconlPreference from "@/assets/work/vooreenprikkie.co.nl/preferences.webp?as=metadata";
+import vooreenprikkieconlPlan from "@/assets/work/vooreenprikkie.co.nl/plan.webp?as=metadata";
+import vooreenprikkieconlPlanItem from "@/assets/work/vooreenprikkie.co.nl/plan-item.webp?as=metadata";
+import vooreenprikkieconlPlanList from "@/assets/work/vooreenprikkie.co.nl/plan-list.webp?as=metadata";
+import vooreenprikkieconlSearch from "@/assets/work/vooreenprikkie.co.nl/search.webp?as=metadata";
 
-import vooreenprikkieconlPreference from "@/assets/work/vooreenprikkie.co.nl/preferences.png";
-import vooreenprikkieconlPlan from "@/assets/work/vooreenprikkie.co.nl/plan.png";
-import vooreenprikkieconlPlanItem from "@/assets/work/vooreenprikkie.co.nl/plan-item.png";
-import vooreenprikkieconlPlanList from "@/assets/work/vooreenprikkie.co.nl/plan-list.png";
-import vooreenprikkieconlSearch from "@/assets/work/vooreenprikkie.co.nl/search.png";
+import justpreparenlHome from "@/assets/work/justprepare.nl/home.webp?as=metadata";
+import justpreparenlWieZijnWij from "@/assets/work/justprepare.nl/wie-zijn-wij.webp?as=metadata";
+import justpreparenlBlogsEnVerslagen from "@/assets/work/justprepare.nl/blogs-en-verslagen.webp?as=metadata";
+
+import b302nlHome from "@/assets/work/b302.nl/home.webp?as=metadata";
+import b302nlWork from "@/assets/work/b302.nl/work.webp?as=metadata";
+import b302nlBuro from "@/assets/work/b302.nl/buro.webp?as=metadata";
+
+// Small versions of the covers for the overview cards, made at build time.
+import platendoosAutocueThumb from "@/assets/work/platendoos/autocue.webp?w=720&format=webp";
+import maatschappaiToolsThumb from "@/assets/work/maatschapp.ai/tools-dark.webp?w=720&format=webp";
+import podwalkappnlRouteThumb from "@/assets/work/podwalkapp.nl/route.webp?w=720&format=webp";
+import vooreenprikkieconlPlanThumb from "@/assets/work/vooreenprikkie.co.nl/plan.webp?w=720&format=webp";
+import justpreparenlHomeThumb from "@/assets/work/justprepare.nl/home.webp?w=720&format=webp";
+import b302nlHomeThumb from "@/assets/work/b302.nl/home.webp?w=720&format=webp";
 
 export const useWorkStore = defineStore("work", {
   state: () => ({
     work: [
       {
-        slug: "voor-een-prikkie",
-        title: "Voor een Prikkie - Budget Meal Planner",
-        href: "https://www.han.nl/nieuws/2024/06/terugblik-succesvolle-zomereditie-open-up-your-talent/",
-        overviewTitle: "Project Overview & Achievements",
-        overview:
-          "I developed 'Voor een Prikkie' to tackle the daily stress of deciding 'What's for dinner?' while simultaneously helping users save money. As a HAN student project, I built this web application to empower users to generate personalized weekly meal plans based on a fixed budget and individual preferences. The application intelligently searches a database containing thousands of recipes and determines, per recipe, which supermarket currently offers the cheapest ingredients. Using this data, it compiles a weekly plan that adheres to the user's budget. It can even suggest visiting multiple supermarkets for optimal savings, although users can specify in their preferences if they prefer sticking to one. I presented Voor een Prikkie at the HAN Open Up event in 2024, where I was honored to win the Technology Award for the project. During the event, I also participated in the INNOVATE Experience and was nominated for the Most Innovative Student of the Netherlands.",
-        chipsTitle: "Technology & Concepts",
-        chips: [
-          "Web Application Development",
-          "Database Management",
-          "Price Comparison Algorithm",
-          "Budget Optimization Logic",
-          "User Preference Management",
-          "Recipe Data Integration",
-          "Frontend Development",
-          "Backend Development",
+        slug: "platendoos",
+        title: "platendoos",
+        tagline: "A box of records, and a box of tweaks for rekordbox.",
+        accent: "#2978eb",
+        year: "2026",
+        role: "Solo project",
+        stack: [
+          "C++20",
+          "Objective-C++",
+          "Binary patching",
+          "Core ML",
+          "ONNX Runtime / DirectML",
+          "WebKit / WebView2",
+          "VitePress",
         ],
-        images: [
-          vooreenprikkieconlPreference,
-          vooreenprikkieconlPlan,
-          vooreenprikkieconlPlanItem,
-          vooreenprikkieconlPlanList,
-          vooreenprikkieconlSearch,
-        ],
-        cardsTitle: "Key Features I Implemented",
-        cards: [
+        href: "https://platendoos.idiidk.nl/",
+        hrefLabel: "platendoos.idiidk.nl",
+        thumb: platendoosAutocueThumb,
+        cover: { image: platendoosAutocue, frame: "window" },
+        blocks: [
           {
-            icon: "mdi-cash-multiple",
-            title: "Budget-Based Meal Planning",
-            description:
-              "Generates weekly meal plans tailored to a user's specific budget and dietary/personal preferences, removing meal-time stress.",
+            type: "text",
+            body: [
+              "I DJ with rekordbox, mostly from Spotify, and it kept getting in the way. Playlists that took ages to load. Spotify that locked up mid-set until I force quit. Beat grids that put the 1 in the wrong place. Pioneer wasn't going to fix those for me, so I opened up the program and did it myself.",
+              "platendoos is the result: 34 mods that load into rekordbox 7 on macOS and Windows. It never touches your installed copy. On a Mac it makes a patched copy next to it; on Windows a small launcher starts rekordbox with the mods loaded in memory. Your library and settings are shared, and you can open plain rekordbox whenever you like.",
+            ],
           },
           {
-            icon: "mdi-store-search-outline",
-            title: "Smart Supermarket Pricing",
-            description:
-              "Dynamically identifies the cheapest supermarket for the ingredients needed for each recipe in the plan, maximizing potential savings.",
+            type: "numbers",
+            items: [
+              { value: "34", label: "mods, each one switchable on its own" },
+              { value: "147", label: "places in rekordbox's code the mods hook into" },
+              { value: "67.5%", label: "of keys right with betterkey, against rekordbox's 56.8%" },
+              { value: "2", label: "platforms from the same source" },
+            ],
           },
           {
-            icon: "mdi-cogs",
-            title: "Flexible Shopping Strategy",
-            description:
-              "Allows users to configure preferences, including whether the app should optimize across multiple supermarkets or stick to a single one.",
-          },
-        ],
-      },
-      {
-        slug: "just-prepare",
-        title: "Just Prepare - Just Energy Transition Research",
-        href: "https://justprepare.nl/",
-        overviewTitle: "Project Overview",
-        overview:
-          "Just Prepare focuses on the energy transition (ET) in underprivileged neighbourhoods, addressing two key mismatches: 1) between retrofit technologies and residents' energy practices, and 2) between residents and the actors planning/implementing solutions. These mismatches risk hindering the ET's effectiveness and justice. The project develops practical, methodological, and substantive knowledge by centering on residents' diverse needs and practices (cooking, washing, heating). It utilizes Living Labs in four municipalities and Learning Labs involving stakeholders, aiming to revise agendas, develop user-centric technologies and strategies, and create training materials for professionals to foster a just and effective energy transition.",
-        chipsTitle: "Key Themes & Technology",
-        chips: [
-          "Energy Transition",
-          "Energy Justice",
-          "Resident Engagement",
-          "Underprivileged Neighbourhoods",
-          "Living Labs",
-          "Action Research",
-          "Co-creation",
-          "WordPress",
-          "Elementor",
-        ],
-        images: [
-          justpreparenlHome,
-          justpreparenlWieZijnWij,
-          justpreparenlBlogsEnVerslagen,
-        ],
-        cardsTitle: "Project Highlights",
-        cards: [
-          {
-            icon: "mdi-home-account",
-            title: "Resident-Centric Approach",
-            description:
-              "Investigates and integrates the diverse daily energy practices, needs, and experiences of residents in underprivileged neighbourhoods.",
+            type: "video",
+            src: "https://media.idiidk.nl/platendoos-trailer.mp4",
+            poster: platendoosQuickdeck.src,
+            caption: "The trailer, recorded in rekordbox. With sound.",
           },
           {
-            icon: "mdi-scale-balance",
-            title: "Promoting Energy Justice",
-            description:
-              "Explicitly addresses distributional (costs/benefits), procedural (access to decision-making), and recognitional justice for vulnerable groups in the ET.",
+            type: "text",
+            heading: "Getting in without the source",
+            body: [
+              "There is no plugin API for rekordbox, so everything goes through its compiled code. The mods look up what they need by name when rekordbox starts: functions by their symbols, fields inside rekordbox's objects by a small recipe (\"the offset in the ninth load inside this function\"). When an update only moves code around, nothing breaks. When a mod can't find its way, it switches itself off and logs why, and the rest keep working.",
+              "The Windows build of rekordbox has no names in it at all. For that, each Windows build gets a table that maps the Mac names onto it, made by matching the two builds against each other. For a version without a table, the patcher makes one on the spot.",
+            ],
           },
           {
-            icon: "mdi-lightbulb-on-outline",
-            title: "Collaborative Knowledge Development",
-            description:
-              "Develops and tests knowledge, methods, and tools through practical application in Living Labs and disseminates insights via Learning Labs involving diverse stakeholders.",
+            type: "shot",
+            image: platendoosAnalysis,
+            frame: "window",
+            wide: true,
+            caption: "Analysing a whole playlist, Spotify ones too, a few tracks at a time.",
           },
           {
-            icon: "mdi-account-group-outline",
-            title: "Multi-Stakeholder Collaboration",
-            description:
-              "Involves close cooperation between universities, applied science institutions, municipalities, housing corporations, residents, and other practical partners.",
+            type: "points",
+            heading: "Some of the mods",
+            items: [
+              {
+                title: "autocue",
+                body: "Works out a track's arrangement (which bars repeat which, per stem) and has a language model place hot cues for intro, build, drop and outro, following rules you type in plain words. Then you fine-tune them on the waveform before anything is written.",
+              },
+              {
+                title: "bettergrid",
+                body: "Runs every track through the Beat This! beat tracker next to rekordbox's own. Where they disagree on the 1, the music decides: it goes where the track changes, or else where the kick comes in.",
+              },
+              {
+                title: "betterstems",
+                body: "Separates stems with HTDemucs on the GPU instead of rekordbox's own engine. Cleaner stems, and stemcache keeps them on disk so a track you've played before has them right away.",
+              },
+              {
+                title: "spotifyfix",
+                body: "Fixes a deadlock in rekordbox's Spotify client, where a token refresh colliding with a playlist refresh froze every download until you force quit.",
+              },
+              {
+                title: "genres",
+                body: "Listens to each track with a style model that knows 400 Discogs styles and fills in the Genre field. With Genre first, the genre also picks the tempo: 140, not 70.",
+              },
+              {
+                title: "flx4",
+                body: "Turns a DDJ-FLX4, a two-deck controller, into a four-deck one with stem pads, using SHIFT combinations Pioneer left unused.",
+              },
+            ],
+          },
+          {
+            type: "shots",
+            items: [
+              { image: platendoosGenres, frame: "window", caption: "Genres from what the music sounds like." },
+              { image: platendoosTrackmenu, frame: "window", caption: "A calmer right-click menu." },
+            ],
+          },
+          {
+            type: "text",
+            heading: "The windows are web pages",
+            body: [
+              "Everything you see that isn't rekordbox (the analysis window, auto cues, genres, the patcher) is plain HTML in the system's web view. The C++ side builds the window's state as JSON and handles what comes back. It made a dozen windows doable for one person, and they look the same on both platforms.",
+              "The models run where the hardware is: Core ML on a Mac, and rekordbox's own ONNX Runtime with DirectML on Windows.",
+            ],
+          },
+          {
+            type: "shots",
+            items: [
+              { image: platendoosPatcher, frame: "window", caption: "The patcher, after an install." },
+              { image: platendoosFlx4, frame: "window", caption: "Four decks on a two-deck controller." },
+            ],
+          },
+          {
+            type: "aside",
+            label: "How you can tell",
+            body: "A modded rekordbox has a small PLATENDOOS chip next to its logo. Click it and you get every mod and whether it's on.",
+          },
+          { type: "shot", image: platendoosChip, frame: "bare" },
+          {
+            type: "text",
+            body: [
+              "It's free, non-commercial and unofficial. Install it, try it, and if it breaks something, the logs say what.",
+            ],
           },
         ],
       },
       {
         slug: "maatschapp-ai",
-        title: "Maatschapp.ai - Social Impact AI Platform",
-        href: "https://maatschapp.ai",
-        overviewTitle: "Project Overview",
-        overview: `Developed Maatschapp.ai, an AI-powered platform by Uitvoeringsbrigade, designed to empower professionals in the Dutch social domain. The primary goal is to reduce administrative burden and enhance the quality of support for citizens, particularly those facing disadvantages, allowing professionals to focus on impactful work ('Tijd voor wat telt'). The platform features a suite of specialized AI tools aimed at improving screening, planning, collaboration, and analysis within the social sector. These tools are set to be fully integrated into the companion platform GrowPad by 2025 for a seamless workflow.`,
-        chipsTitle: "Technology Stack",
-        chips: [
-          "AI / Machine Learning",
-          "Cloud Platform",
-          "Data Analytics",
-          "API Integrations (GrowPad)",
+        title: "Maatschapp.ai",
+        tagline: "AI tools for people who work in the Dutch social domain.",
+        accent: "#a3b545",
+        year: "2025 – now",
+        role: "Development",
+        client: "Uitvoeringsbrigade",
+        stack: [
+          "Vue 3",
+          "Tailwind CSS",
+          "Bun",
+          "Elysia",
+          "MikroORM",
+          "Gemini",
+          "whisper.cpp",
+          "Docker",
         ],
-        images: [maatschappaiHome, maatschappaiAccount, maatschappaiTool],
-        cardsTitle: "Key Features",
-        cards: [
+        href: "https://maatschapp.ai",
+        hrefLabel: "maatschapp.ai",
+        thumb: maatschappaiToolsThumb,
+        cover: { image: maatschappaiTools, frame: "browser" },
+        blocks: [
           {
-            icon: "mdi-account-heart-outline",
-            title: "Citizen-Focused AI Tools",
-            description:
-              "Provides AI assistance for screening, creating personalized (growth) plans, and substantiating tailored support for individuals and families.",
+            type: "text",
+            body: [
+              "Social workers spend a lot of their week on paperwork: reports, plans, write-ups of conversations they just had. Uitvoeringsbrigade wanted to give that time back to the people they work with. Maatschapp.ai is the platform I built for it.",
+              "It's a set of assistants, each made for one job. One helps write a Wmo report that holds up legally. One works out the social costs and benefits of a tailored solution. One is just there to reflect with. A professional picks the one they need and starts talking.",
+            ],
           },
           {
-            icon: "mdi-chart-line",
-            title: "Organizational Intelligence",
-            description:
-              "Enables learning from case studies (action research), improves inter-agency collaboration, and supports socio-economic cost-benefit analyses.",
+            type: "shot",
+            image: maatschappaiChat,
+            frame: "browser",
+            wide: true,
+            caption: "Starting a conversation with one of the assistants.",
           },
           {
-            icon: "mdi-puzzle-edit-outline",
-            title: "Practical & Integrated AI",
-            description:
-              "Translates complex AI into user-friendly, practical tools, integrated with GrowPad (2025) to streamline workflows and maximize human impact.",
+            type: "points",
+            heading: "What's in it",
+            items: [
+              {
+                title: "Assistants",
+                body: "Each tool is its own assistant with its own instructions, built and managed in an admin panel. Files, links and transcripts can be added to a conversation.",
+              },
+              {
+                title: "Transcriptions",
+                body: "Record a conversation or upload audio and it's written out. That runs on our own whisper.cpp service, so the audio doesn't leave for a third party.",
+              },
+              {
+                title: "Privacy first",
+                body: "Recognisable details such as names, BSNs, birth dates and addresses are stripped out before anything reaches the model.",
+              },
+              {
+                title: "Courses",
+                body: "A small learning platform inside the app, with courses on working with AI and with GrowPad, Uitvoeringsbrigade's other platform.",
+              },
+            ],
+          },
+          {
+            type: "shots",
+            items: [
+              { image: maatschappaiTranscriptions, frame: "browser", caption: "Transcriptions, with the contents blurred." },
+              { image: maatschappaiCourses, frame: "browser", caption: "Courses." },
+            ],
+          },
+          {
+            type: "text",
+            heading: "Built to last",
+            body: [
+              "It started in January 2025 and has been in use and growing since. The front end is Vue with Tailwind; the API runs on Bun with Elysia and MikroORM. Behind it are encrypted offsite backups and restore tests that report to monitoring, the kind of work nobody sees until the day it matters.",
+            ],
+          },
+          {
+            type: "shots",
+            items: [
+              { image: maatschappaiToolsLight, frame: "browser", caption: "Light." },
+              { image: maatschappaiTools, frame: "browser", caption: "Dark." },
+            ],
           },
         ],
       },
       {
         slug: "podwalk-betuwe-oorlogstijd",
-        title: "Podwalk: De Betuwe in Oorlogstijd",
+        title: "Podwalk",
+        tagline: "Walk the Betuwe and hear what happened there during the war.",
+        accent: "#3d7bf5",
+        year: "2024 – 2025",
+        role: "App and back end",
+        stack: ["Flutter", "iOS & Android", "Laravel", "PHP"],
         href: "https://podwalkapp.nl/",
-        overviewTitle: "App Overview",
-        overview:
-          "Podwalk: De Betuwe in Oorlogstijd allows users to discover the Betuwe region through a historical lens, specifically focusing on World War II. The app offers walking routes guiding users past significant locations marked by the war years. At various points along the routes, users can access audio fragments, videos, and photos to learn about the events that transpired there. Podwalk provides an interactive and visual way to experience the history of the Betuwe, covering aspects from occupation to liberation and highlighting the impact on the region and its inhabitants. It blends historical education with the adventure of exploration.",
-        chipsTitle: "Key Features & Focus",
-        chips: [
-          "WWII History",
-          "Betuwe Region",
-          "Historical Walking Routes",
-          "Audio Tours",
-          "Multimedia Storytelling",
-          "Location-Based Experience",
-          "Mobile App (iOS/Android with Flutter)",
-          "Regional Heritage",
-          "Interactive Learning",
+        hrefLabel: "podwalkapp.nl",
+        thumb: podwalkappnlRouteThumb,
+        cover: { image: podwalkappnlRoute, frame: "bare" },
+        blocks: [
+          {
+            type: "text",
+            body: [
+              "Podwalk: De Betuwe in Oorlogstijd is a walking app. You pick a route, put your phone in your pocket and walk. At the places where something happened during the Second World War, from the occupation to the liberation, the app plays the story: audio, old photos, sometimes video.",
+              "I built the Flutter app for iOS and Android, and the Laravel back end where the routes and their stories are put together.",
+            ],
+          },
+          {
+            type: "shots",
+            items: [
+              { image: podwalkappnlHome, frame: "bare" },
+              { image: podwalkappnlSettings, frame: "bare" },
+            ],
+          },
+          {
+            type: "points",
+            items: [
+              {
+                title: "Stories tied to places",
+                body: "Every stop on a route sits on the map with its own audio, photos and video. The app takes you from one to the next.",
+              },
+              {
+                title: "Made to be edited",
+                body: "Routes, stops and media are managed in the back end, so new walks can be added without a new app release.",
+              },
+            ],
+          },
+          {
+            type: "aside",
+            label: "From the deploy notes",
+            body: "The hosting had no shell, no outside access to the database and an SFTP connection that kept dropping. So deploying became: a script zips the whole project together with a small deploy.php, you upload the two files, open deploy.php in a browser, and it unpacks everything and deletes itself. Not pretty, but it worked every time.",
+          },
         ],
-        images: [podwalkappnlHome, podwalkappnlRoute, podwalkappnlSettings],
-        cardsTitle: "App Highlights",
-        cards: [
+      },
+      {
+        slug: "voor-een-prikkie",
+        title: "Voor een Prikkie",
+        tagline: "A week of dinners for the budget you have.",
+        accent: "#f26b3a",
+        year: "2024",
+        role: "Design and development",
+        client: "HAN student project",
+        stack: ["Vue 3", "Vuetify", "Bun", "Elysia", "Algolia", "TypeScript"],
+        href: "https://www.han.nl/nieuws/2024/06/terugblik-succesvolle-zomereditie-open-up-your-talent/",
+        hrefLabel: "HAN Open Up 2024",
+        thumb: vooreenprikkieconlPlanThumb,
+        cover: { image: vooreenprikkieconlPlan, frame: "browser" },
+        blocks: [
           {
-            icon: "mdi-map-marker-path",
-            title: "Interactive Historical Walks",
-            description:
-              "Experience history firsthand by walking routes linked to significant WWII locations in the Betuwe, guided by the app.",
+            type: "text",
+            body: [
+              "\"What are we eating tonight?\" is a daily question, and a harder one when money is tight. Voor een Prikkie answers it for the whole week. You set a budget and what you do and don't eat, and it makes you a meal plan that stays under it.",
+              "It searches a few thousand recipes, prices every ingredient at each supermarket, and picks the cheapest place to buy each one. If that means two shops, it tells you. If you'd rather stick to one, you can say so.",
+            ],
           },
           {
-            icon: "mdi-multimedia",
-            title: "Rich Multimedia Content",
-            description:
-              "Engage with the past through location-triggered audio fragments, historical photos, and video clips embedded within the routes.",
+            type: "numbers",
+            items: [
+              { value: "€95.52", label: "for a week of dinners in the plan at the top" },
+              { value: "Winner", label: "Technology Award, HAN Open Up 2024" },
+            ],
           },
           {
-            icon: "mdi-history",
-            title: "Deep Dive into Regional WWII History",
-            description:
-              "Explore multiple facets of the war's impact on the Betuwe, from the occupation period through to the liberation.",
+            type: "shot",
+            image: vooreenprikkieconlPlanList,
+            frame: "browser",
+            wide: true,
           },
           {
-            icon: "mdi-cellphone-marker",
-            title: "Location-Based Storytelling",
-            description:
-              "Discover stories and historical facts directly linked to the specific places you visit along the walking routes.",
+            type: "text",
+            heading: "Under the hood",
+            body: [
+              "Prices come in from CheckJeBon on a schedule, and a separate worker reprices every recipe whenever they change, so building a plan is a lookup and not a calculation. Recipe search runs on Algolia. The API is Bun with Elysia, the front end Vue with Vuetify.",
+            ],
+          },
+          {
+            type: "shots",
+            items: [
+              { image: vooreenprikkieconlPreference, frame: "browser", caption: "Preferences." },
+              { image: vooreenprikkieconlPlanItem, frame: "browser", caption: "One day of the plan." },
+              { image: vooreenprikkieconlSearch, frame: "browser", caption: "Search." },
+            ],
+          },
+          {
+            type: "aside",
+            label: "Open Up 2024",
+            body: "I presented it at HAN's Open Up event in 2024, where it won the Technology Award. I was also part of the INNOVATE Experience there and nominated for Most Innovative Student of the Netherlands.",
+          },
+        ],
+      },
+      {
+        slug: "just-prepare",
+        title: "Just Prepare",
+        tagline: "A website for research on a fair energy transition.",
+        accent: "#2bb38a",
+        role: "Website",
+        stack: ["WordPress", "Elementor", "PHP"],
+        href: "https://justprepare.nl/",
+        hrefLabel: "justprepare.nl",
+        thumb: justpreparenlHomeThumb,
+        cover: { image: justpreparenlHome, frame: "browser" },
+        blocks: [
+          {
+            type: "text",
+            body: [
+              "Just Prepare is a research project about the energy transition in neighbourhoods that usually get left out of it. It looks at how people actually cook, wash and heat their homes, and whether the solutions planned for them fit that. Universities, municipalities, housing corporations and residents work on it together, in Living Labs in four municipalities.",
+              "That's a lot of different people to talk to on one site. I built it so each of them finds their way: what the project is, who's behind it, and what has come out of it so far.",
+            ],
+          },
+          {
+            type: "shots",
+            items: [
+              { image: justpreparenlWieZijnWij, frame: "browser", caption: "Who's behind it." },
+              { image: justpreparenlBlogsEnVerslagen, frame: "browser", caption: "Blogs and reports." },
+            ],
+          },
+          {
+            type: "text",
+            body: [
+              "It's WordPress with Elementor, so the researchers can post their own blogs and reports without calling a developer for every update.",
+            ],
           },
         ],
       },
       {
         slug: "b302",
-        title: "B302 - Website",
+        title: "B302",
+        tagline: "The website of a creative studio in Arnhem.",
+        accent: "#e94f8a",
+        role: "Development",
+        stack: ["WordPress", "Elementor", "PHP", "SCSS"],
         href: "https://b302.nl",
-        overviewTitle: "Project Overview",
-        overview: `Helped develop a clean, modern, and responsive website for the
-              creative media agency B302, located in Arnhem. The primary goal
-              was to create an attractive online presence that showcases the
-              B302's unique charm, provides essential information to potential
-              clients (portfolio work, contact info, etc.). The site is designed
-              to be user-friendly and visually appealing across all devices,
-              from desktops to smartphones.`,
-        chipsTitle: "Technology Stack",
-        chips: ["WordPress", "Elementor", "PHP", "CSS3 / SCSS"],
-        images: [b302nlHome, b302nlWork, b302nlBuro],
-        cardsTitle: "Key Features",
-        cards: [
+        hrefLabel: "b302.nl",
+        thumb: b302nlHomeThumb,
+        cover: { image: b302nlHome, frame: "browser" },
+        blocks: [
           {
-            icon: "mdi-cellphone-link",
-            title: "Responsive Design",
-            description:
-              "Adapts seamlessly to all screen sizes and keeps the original design philosophy.",
+            type: "text",
+            body: [
+              "B302 is a creative media studio in Arnhem, and a studio's own site has to look like them. The design was set. My part was getting it built without losing anything on the way, on every screen size.",
+            ],
           },
           {
-            icon: "mdi-widgets",
-            title: "Custom Widgets",
-            description:
-              "To achieve the desired design, I created a stack of custom Elementor widgets.",
+            type: "shot",
+            image: b302nlWork,
+            frame: "browser",
+            wide: true,
+            caption: "The work overview.",
           },
           {
-            icon: "mdi-animation",
-            title: "Animation",
-            description:
-              "To achieve a dynamic feel, I helped create the animations visible on the website.",
+            type: "points",
+            items: [
+              {
+                title: "Custom Elementor widgets",
+                body: "The design asked for more than Elementor does out of the box, so I wrote a set of widgets for it. The team can still build pages themselves.",
+              },
+              {
+                title: "Motion",
+                body: "I worked on the animations that make the site feel alive rather than static.",
+              },
+            ],
+          },
+          {
+            type: "shot",
+            image: b302nlBuro,
+            frame: "browser",
+            caption: "Meet the studio.",
           },
         ],
       },

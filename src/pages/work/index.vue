@@ -1,6 +1,6 @@
 <template>
   <AppBarMarginContainer>
-    <WorkList :work="workStore.work"></WorkList>
+    <WorkList :work="workStore.work" />
   </AppBarMarginContainer>
 </template>
 

@@ -1,0 +1,62 @@
+// Global styles: a small reset, the fonts, and the dark page.
+
+*,
+::before,
+::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  line-height: 1.5;
+  overflow-y: scroll;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  min-height: 100dvh;
+  background: #121212;
+  color: #fff;
+  font-family: "Inter", sans-serif;
+  font-optical-sizing: auto;
+}
+
+button,
+input {
+  font: inherit;
+  color: inherit;
+}
+
+img,
+video {
+  display: block;
+  max-width: 100%;
+}
+
+a {
+  color: inherit;
+}
+
+.text-funnel {
+  font-family: "Funnel Display", sans-serif;
+}
+
+// A centred page column, a bit narrower than the window on big screens.
+.container {
+  width: 100%;
+  margin: 0 auto;
+  padding: 16px;
+
+  @media (min-width: 960px) {
+    max-width: 900px;
+  }
+
+  @media (min-width: 1280px) {
+    max-width: 1200px;
+  }
+
+  @media (min-width: 1920px) {
+    max-width: 1800px;
+  }
+}
